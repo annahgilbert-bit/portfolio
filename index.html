@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annah Gilbert — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0a;
+    --cream: #f5f0e8;
+    --sand: #e8dfc8;
+    --terracotta: #c4593a;
+    --warm-gold: #b8923a;
+    --slate: #4a5568;
+    --light-slate: #718096;
+    --white: #ffffff;
+    --section-gap: 120px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Trebuchet MS', sans-serif; background-color: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 48px;
+    background: rgba(245,240,232,0.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(15,14,10,0.08);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+  .hero-left { padding: 80px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-name span { color: var(--terracotta); font-style: italic; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 400; font-style: italic; color: var(--slate); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards; line-height: 1.5; }
+  .hero-bio { font-size: 1rem; line-height: 1.8; color: var(--slate); max-width: 500px; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+  .hero-bio strong { color: var(--ink); font-weight: 600; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.85s forwards; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--terracotta); color: var(--white); padding: 14px 28px; border-radius: 2px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: #a84830; transform: translateY(-2px); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--ink); padding: 14px 28px; border: 1.5px solid var(--ink); border-radius: 2px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; transition: all 0.25s; }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+  .hero-right { background: var(--ink); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 48px; }
+  .hero-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 20%, rgba(196,89,58,0.25) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(184,146,58,0.15) 0%, transparent 50%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+  .hero-stats { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-card { background: rgba(255,255,255,0.06); padding: 28px 24px; border: 1px solid rgba(255,255,255,0.08); opacity: 0; animation: fadeIn 1s ease forwards; }
+  .stat-card:nth-child(1){animation-delay:0.6s} .stat-card:nth-child(2){animation-delay:0.75s} .stat-card:nth-child(3){animation-delay:0.9s} .stat-card:nth-child(4){animation-delay:1.05s}
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--white); line-height: 1; margin-bottom: 8px; }
+  .stat-number span { color: var(--terracotta); }
+  .stat-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); line-height: 1.4; }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section { padding: var(--section-gap) 48px; max-width: 1200px; margin: 0 auto; }
+  .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .section-label span { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--terracotta); opacity: 0.3; }
+  .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 56px; }
+  .section-heading em { font-style: italic; color: var(--terracotta); }
+
+  /* ── SELECTED IMPACT CARDS ── */
+  .impact-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .impact-card {
+    background: var(--white); padding: 40px 36px;
+    border: 1px solid rgba(15,14,10,0.06);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .impact-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--terracotta); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .impact-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .impact-card:hover::before { transform: scaleX(1); }
+  .impact-card-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
+  .impact-card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: var(--ink); }
+  .impact-bullet { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; line-height: 1.6; color: var(--slate); }
+  .impact-bullet strong { color: var(--ink); }
+  .impact-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--terracotta); margin-top: 8px; flex-shrink: 0; }
+
+  /* ── APPROACH SECTION ── */
+  .approach-section { background: var(--ink); padding: var(--section-gap) 48px; }
+  .approach-inner { max-width: 1200px; margin: 0 auto; }
+  .approach-section .section-label span { color: var(--warm-gold); }
+  .approach-section .section-label::after { background: var(--warm-gold); }
+  .approach-section .section-heading { color: var(--white); }
+  .approach-section .section-heading em { color: var(--warm-gold); }
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .approach-card { background: rgba(255,255,255,0.04); padding: 36px 32px; border: 1px solid rgba(255,255,255,0.08); }
+  .approach-num { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--warm-gold); margin-bottom: 20px; text-transform: uppercase; }
+  .approach-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .approach-desc { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.5); }
+  .approach-desc strong { color: rgba(255,255,255,0.85); }
+
+  /* ── EXPERTISE ── */
+  .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .expertise-card { background: var(--white); padding: 40px 32px; border: 1px solid rgba(15,14,10,0.06); transition: all 0.3s; position: relative; overflow: hidden; }
+  .expertise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--terracotta); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .expertise-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .expertise-card:hover::before { transform: scaleX(1); }
+  .expertise-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+  .expertise-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 14px; color: var(--ink); }
+  .expertise-desc { font-size: 0.88rem; line-height: 1.7; color: var(--light-slate); }
+
+  /* ── PRODUCT PILLARS ── */
+  .pillars-section { background: var(--sand); padding: var(--section-gap) 48px; }
+  .pillars-inner { max-width: 1200px; margin: 0 auto; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .pillar-card { background: var(--white); padding: 44px 36px; border: 1px solid rgba(15,14,10,0.06); position: relative; }
+  .pillar-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: rgba(196,89,58,0.1); line-height: 1; margin-bottom: 4px; }
+  .pillar-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; line-height: 1.2; }
+  .pillar-desc { font-size: 0.88rem; line-height: 1.75; color: var(--slate); margin-bottom: 20px; }
+  .pillar-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pillar-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); background: rgba(196,89,58,0.08); padding: 4px 10px; border-radius: 2px; }
+
+  /* ── CASE STUDY ── */
+  .case-study-section { background: var(--ink); padding: var(--section-gap) 48px; }
+  .case-study-inner { max-width: 1200px; margin: 0 auto; }
+  .case-study-section .section-label span { color: var(--warm-gold); }
+  .case-study-section .section-label::after { background: var(--warm-gold); }
+  .case-study-section .section-heading { color: var(--white); }
+  .case-study-section .section-heading em { color: var(--warm-gold); }
+  .case-study-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0; overflow: hidden;
+  }
+  .cs-header {
+    background: linear-gradient(135deg, rgba(196,89,58,0.3) 0%, rgba(184,146,58,0.15) 100%);
+    padding: 48px 56px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 40px;
+  }
+  .cs-badge { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 16px; }
+  .cs-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 16px; }
+  .cs-subtitle { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 540px; }
+  .cs-meta { display: flex; flex-direction: column; gap: 8px; min-width: 200px; }
+  .cs-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .cs-meta-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .cs-meta-value { font-size: 0.88rem; font-weight: 600; color: var(--warm-gold); }
+  .cs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .cs-section { padding: 40px 48px; border-right: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cs-section:nth-child(even) { border-right: none; }
+  .cs-section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .cs-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+  .cs-section-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 14px; line-height: 1.3; }
+  .cs-text { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.55); }
+  .cs-text strong { color: rgba(255,255,255,0.88); }
+  .cs-text + .cs-text { margin-top: 12px; }
+  .cs-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .cs-list li { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.55); padding-left: 18px; position: relative; }
+  .cs-list li::before { content: '→'; position: absolute; left: 0; color: var(--warm-gold); font-size: 0.72rem; top: 2px; }
+  .cs-list li strong { color: rgba(255,255,255,0.88); }
+  .cs-impact-bar { background: rgba(196,89,58,0.12); border-top: 1px solid rgba(196,89,58,0.3); padding: 36px 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .cs-impact-metric { text-align: center; padding: 16px; }
+  .cs-impact-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--white); margin-bottom: 6px; line-height: 1; }
+  .cs-impact-num span { color: var(--terracotta); }
+  .cs-impact-lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); line-height: 1.4; }
+
+  /* ── EXPERIENCE ── */
+  .experience-section { background: var(--ink); padding: var(--section-gap) 48px; }
+  .experience-inner { max-width: 1200px; margin: 0 auto; }
+  .experience-section .section-label span { color: var(--warm-gold); }
+  .experience-section .section-label::after { background: var(--warm-gold); }
+  .experience-section .section-heading { color: var(--white); }
+  .experience-section .section-heading em { color: var(--warm-gold); }
+  .timeline { display: grid; grid-template-columns: 200px 1fr; gap: 0; }
+  .timeline-entry { display: contents; }
+  .timeline-year-divider { grid-column: 1 / -1; display: flex; align-items: center; gap: 20px; padding: 36px 0 8px; }
+  .timeline-year-label { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--warm-gold); white-space: nowrap; letter-spacing: 0.08em; }
+  .career-narrative { font-size: 0.97rem; line-height: 1.85; color: rgba(255,255,255,0.55); max-width: 700px; margin-bottom: 56px; border-left: 3px solid var(--terracotta); padding-left: 24px; }
+  .timeline-year-line { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--warm-gold); padding: 32px 32px 32px 0; border-right: 1px solid rgba(255,255,255,0.1); position: relative; text-align: right; line-height: 1.4; }
+  .timeline-date::after { content: ''; position: absolute; right: -5px; top: 40px; width: 9px; height: 9px; border-radius: 50%; background: var(--terracotta); border: 2px solid var(--ink); }
+  .timeline-content { padding: 32px 0 32px 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .timeline-role { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .timeline-company { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; }
+  .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .timeline-list li { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.55); padding-left: 16px; position: relative; }
+  .timeline-list li::before { content: '→'; position: absolute; left: 0; color: var(--warm-gold); font-size: 0.75rem; }
+  .timeline-list li strong { color: rgba(255,255,255,0.88); }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .project-card { background: var(--white); padding: 40px; border: 1px solid rgba(15,14,10,0.06); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+  .project-card.featured { grid-column: span 2; background: var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .project-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); background: rgba(196,89,58,0.1); padding: 4px 10px; border-radius: 2px; margin-bottom: 16px; }
+  .project-card.featured .project-tag { color: var(--warm-gold); background: rgba(184,146,58,0.15); }
+  .project-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: 20px; line-height: 1.25; }
+  .project-card.featured .project-name { font-size: 1.7rem; color: var(--white); }
+  .project-pdim { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .pdim-row { display: flex; gap: 10px; align-items: flex-start; font-size: 0.86rem; line-height: 1.65; }
+  .pdim-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); min-width: 72px; padding-top: 2px; flex-shrink: 0; }
+  .project-card.featured .pdim-label { color: var(--warm-gold); }
+  .pdim-text { color: var(--slate); }
+  .pdim-text strong { color: var(--ink); }
+  .project-card.featured .pdim-text { color: rgba(255,255,255,0.55); }
+  .project-card.featured .pdim-text strong { color: rgba(255,255,255,0.9); }
+  .project-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 24px; }
+  .metric-box { background: rgba(255,255,255,0.05); padding: 24px 20px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
+  .metric-val { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+  .metric-val span { color: var(--warm-gold); }
+  .metric-lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); line-height: 1.4; }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--sand); padding: var(--section-gap) 48px; }
+  .skills-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+  .skills-intro { position: sticky; top: 120px; }
+  .skills-intro p { font-size: 0.95rem; line-height: 1.8; color: var(--slate); margin-top: 24px; }
+  .skills-clusters { display: flex; flex-direction: column; gap: 40px; }
+  .skill-cluster-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag { background: var(--white); color: var(--ink); padding: 8px 16px; font-size: 0.83rem; font-weight: 500; border: 1px solid rgba(15,14,10,0.1); border-radius: 2px; transition: all 0.2s; }
+  .skill-tag:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  /* ── INSIGHTS ── */
+  .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .insight-card { background: var(--white); padding: 32px; border: 1px solid rgba(15,14,10,0.06); }
+  .insight-quote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; line-height: 1.65; color: var(--ink); margin-bottom: 20px; }
+  .insight-quote::before { content: '"'; color: var(--terracotta); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-right: 2px; }
+  .insight-source { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-slate); }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--ink); padding: var(--section-gap) 48px; text-align: center; position: relative; overflow: hidden; }
+  .contact-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(196,89,58,0.2) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(184,146,58,0.15) 0%, transparent 60%); }
+  .contact-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .contact-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 20px; }
+  .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 24px; }
+  .contact-heading em { font-style: italic; color: var(--terracotta); }
+  .contact-sub { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.5); margin-bottom: 48px; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  footer { background: #080807; padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 18px 24px; } .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; } .hero-right { min-height: 380px; } .hero-left { padding: 60px 24px; }
+    .expertise-grid, .approach-grid, .pillars-grid, .impact-cards-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; } .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 100px 1fr; }
+    .skills-inner { grid-template-columns: 1fr; gap: 40px; } .skills-intro { position: static; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .cs-body { grid-template-columns: 1fr; } .cs-header { grid-template-columns: 1fr; }
+    .cs-impact-bar { grid-template-columns: repeat(2, 1fr); }
+    .section { padding: 60px 24px; }
+    .approach-section, .experience-section, .case-study-section, .contact-section, .pillars-section, .skills-section { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Annah Gilbert ✦</a>
+  <ul class="nav-links">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#case-study">Case Study</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Product Manager · Systems, Growth &amp; Customer Experience</p>
+    <h1 class="hero-name">Annah<br><span>Gilbert</span></h1>
+    <p class="hero-title">Designing systems that scale in messy, real-world environments</p>
+    <p class="hero-bio">
+      I build and scale product systems across <strong>credit, customer experience, and field operations</strong> in real-world environments.<br><br>
+      At Copia and MoPhones, I've worked at the intersection of product, operations, and risk — designing <strong>loan structures, collections workflows, and Agent and Customer-facing tools</strong> that translate business rules into real, usable systems.<br><br>
+      My approach starts from behaviour, not assumptions — whether it's understanding why customers default, why agents submit poor applications, or where the journey breaks. I then <strong>translate those insights into product decisions</strong> that improve approvals, reduce failures, and drive scalable growth.<br><br>
+      I'm particularly interested in building products for <strong>emerging markets</strong> — where constraints are real, infrastructure is imperfect, and the best solutions come from deeply understanding how things work on the ground.
+    </p>
+    <div class="hero-cta">
+      <a href="#case-study" class="btn-primary">Read Case Study ↓</a>
+      <a href="#contact" class="btn-secondary">Let's Connect</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number"><span>+14</span>%</div>
+        <div class="stat-label">Loan Approvals Unlocked via High-Deposit Feature</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span>−33</span>%</div>
+        <div class="stat-label">Affordability Failures After Checker Launch</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">300<span>+</span></div>
+        <div class="stat-label">Customer Responses Driving Product Decisions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50<span>+</span></div>
+        <div class="stat-label">Merchants Recruited Into Offline Distribution</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SELECTED IMPACT ── -->
+<section id="impact" class="section">
+  <div class="section-label"><span>Selected Impact</span></div>
+  <h2 class="section-heading">What I've <em>actually</em><br>moved</h2>
+  <div class="impact-cards-grid">
+
+    <div class="impact-card reveal">
+      <span class="impact-card-icon">🏗️</span>
+      <h3 class="impact-card-title">Credit System Design</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Built <strong>system-level collections enforcement</strong> at Copia Kenya — translating credit policy into automated loan deduction rules, eligibility thresholds, and agent-facing decision flows</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>Reduced default risk through product design</strong> — embedded affordability checks, high-deposit pathways, and grace period qualification directly into the customer journey</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Managed the <strong>Odoo loan module</strong> end-to-end: configuration, testing, agent training, and ongoing iteration</span></div>
+    </div>
+
+    <div class="impact-card reveal reveal-delay-1">
+      <span class="impact-card-icon">📈</span>
+      <h3 class="impact-card-title">Growth Unlock</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>+14% loan approvals unlocked</strong> by designing a high-deposit feature for customers who failed standard affordability — turning a rejection into a conditional approval pathway</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Identified a <strong>major conversion drop-off post-approval</strong> — customers approved but not disbursed — and diagnosed it as a communication and agent handoff gap</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Proposed targeted interventions that directly addressed the funnel leak before disbursement</span></div>
+    </div>
+
+    <div class="impact-card reveal reveal-delay-2">
+      <span class="impact-card-icon">⚡</span>
+      <h3 class="impact-card-title">Product Efficiency</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>Reduced affordability failures by 33%</strong> by building a pre-check tool for agents — surfacing eligibility signals before a full application was submitted</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>Eliminated manual agent affordability calculations</strong> — replaced a time-consuming, error-prone process with an automated in-app tool that standardised decisions</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Shortened the agent submission loop and improved data quality at point of entry</span></div>
+    </div>
+
+    <div class="impact-card reveal reveal-delay-3">
+      <span class="impact-card-icon">🔬</span>
+      <h3 class="impact-card-title">Customer Insight → Product Decisions</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>300+ customer responses</strong> collected and analysed across NPS surveys, in-depth interviews, and LAB visits — spanning payment behaviour, device locking, and support quality</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Identified <strong>payment delays and unclear lock policies</strong> as the top pain points — directly driving a USSD self-service grace period sprint item and an in-app education campaign</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Discovered <strong>31.6% of non-upgraders were simply unaware</strong> they could re-apply — reframing the problem from pricing to awareness</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW I APPROACH PROBLEMS ── -->
+<section class="approach-section">
+  <div class="approach-inner">
+    <div class="section-label"><span>How I Work</span></div>
+    <h2 class="section-heading">How I <em>approach</em><br>problems</h2>
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-num">01 — Behaviour First</div>
+        <h3 class="approach-title">Start from behaviour, not assumptions</h3>
+        <p class="approach-desc">I don't start with what I think users want. I start with <strong>what they actually do</strong> — where they drop off, where they call support, where the agent submits incorrect data. The behaviour is the signal. The assumption is a hypothesis to be tested.</p>
+      </div>
+      <div class="approach-card reveal reveal-delay-1">
+        <div class="approach-num">02 — Systems Thinking</div>
+        <h3 class="approach-title">Design systems, not one-off fixes</h3>
+        <p class="approach-desc">One failed loan application is a support ticket. <strong>A thousand failed applications is a product problem.</strong> I look for the structural pattern — whether it's an affordability threshold, a communication gap, or a broken handoff — and design the system that fixes the root cause.</p>
+      </div>
+      <div class="approach-card reveal reveal-delay-2">
+        <div class="approach-num">03 — Field → Product</div>
+        <h3 class="approach-title">Bridge field insights with product decisions</h3>
+        <p class="approach-desc">Some of my best product decisions came from a conversation in a Ruiru market stall or a Nairobi repair shop. <strong>Real environments reveal what dashboards hide.</strong> I build the habit of going to where the friction lives — then translating it into sprint-ready user stories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERTISE ── -->
+<section id="expertise" class="section">
+  <div class="section-label"><span>Capabilities</span></div>
+  <h2 class="section-heading">What I <em>bring</em><br>to a product team</h2>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <span class="expertise-icon">💳</span>
+      <h3 class="expertise-title">Credit & Loan Systems</h3>
+      <p class="expertise-desc">Designing loan eligibility frameworks, collections enforcement, affordability checks, and repayment management systems. I've built these from scratch in markets where infrastructure is thin and risk is real.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-1">
+      <span class="expertise-icon">🔬</span>
+      <h3 class="expertise-title">Customer & User Research</h3>
+      <p class="expertise-desc">Designing NPS and CSAT programmes, running in-depth interviews and LAB visits, compiling 300+ responses into prioritised product recommendations — with a clear line from insight to sprint item.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-2">
+      <span class="expertise-icon">📱</span>
+      <h3 class="expertise-title">Product Management</h3>
+      <p class="expertise-desc">Writing user stories, owning sprint prioritisation (BRICE), mapping customer journeys, coordinating integrations, and bridging engineering with business decisions across Agent Apps and Customer Apps.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-3">
+      <span class="expertise-icon">💬</span>
+      <h3 class="expertise-title">CX Strategy & Lifecycle</h3>
+      <p class="expertise-desc">Mapping the full customer lifecycle — onboarding to repayment to upgrade. Designing Customer.io campaigns, auditing SMS/WhatsApp/USSD flows, and building CSAT frameworks tied to real service outcomes.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-1">
+      <span class="expertise-icon">📊</span>
+      <h3 class="expertise-title">Analytics & Dashboards</h3>
+      <p class="expertise-desc">Building NPS and CSAT dashboards in Holistics, setting up Google Analytics event tracking via GTM, defining Amplitude dashboards, and running campaign impact analyses for grace period and defaulter cohorts.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-2">
+      <span class="expertise-icon">🌍</span>
+      <h3 class="expertise-title">Field Operations & Agent Systems</h3>
+      <p class="expertise-desc">Running field shadowing in live markets, recruiting and training agent and merchant networks, designing commission structures, and translating on-the-ground friction into product features that scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCT PILLARS ── -->
+<section class="pillars-section">
+  <div class="pillars-inner">
+    <div class="section-label"><span>Product & System Work</span></div>
+    <h2 class="section-heading">Three areas where I've<br>built <em>real systems</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-number">01</div>
+        <h3 class="pillar-title">Credit & Loan Systems</h3>
+        <p class="pillar-desc">Designing the product layer around credit — eligibility rules, affordability checks, collections enforcement, high-deposit pathways, and the agent tools that sit between a customer and a loan decision. At Copia Kenya and MoPhones, I built these systems from policy into product.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Loan Eligibility</span>
+          <span class="pillar-tag">Collections</span>
+          <span class="pillar-tag">Affordability Checks</span>
+          <span class="pillar-tag">Odoo</span>
+          <span class="pillar-tag">Risk Design</span>
+          <span class="pillar-tag">Grace Periods</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-number">02</div>
+        <h3 class="pillar-title">Customer Research → Product Decisions</h3>
+        <p class="pillar-desc">Running research that actually changes what gets built — not research that gets filed and forgotten. From 300+ NPS responses to in-person LAB interviews to field observations, I turn qualitative and quantitative signals into sprint-ready priorities.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">NPS Research</span>
+          <span class="pillar-tag">User Interviews</span>
+          <span class="pillar-tag">CSAT</span>
+          <span class="pillar-tag">Persona Mapping</span>
+          <span class="pillar-tag">A/B Testing</span>
+          <span class="pillar-tag">Voice of Customer</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-number">03</div>
+        <h3 class="pillar-title">Field → Product Loop</h3>
+        <p class="pillar-desc">Going where the product actually lives — Nairobi market stalls, repair shops, agent training rooms — and closing the loop between what's happening in the field and what gets prioritised in the sprint. This loop is how I've consistently found problems dashboards miss.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Field Shadowing</span>
+          <span class="pillar-tag">Agent Systems</span>
+          <span class="pillar-tag">Merchant Networks</span>
+          <span class="pillar-tag">User Stories</span>
+          <span class="pillar-tag">Offline Sales</span>
+          <span class="pillar-tag">Distribution Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDY ── -->
+<section id="case-study" class="case-study-section">
+  <div class="case-study-inner">
+    <div class="section-label"><span>Featured Case Study</span></div>
+    <h2 class="section-heading">Deep work, <em>documented</em></h2>
+
+    <div class="case-study-card reveal">
+      <div class="cs-header">
+        <div>
+          <div class="cs-badge">Copia Kenya · Agent Credit & Loan System</div>
+          <h3 class="cs-title">Building a Credit & Collections<br>System from the Ground Up</h3>
+          <p class="cs-subtitle">How I translated credit policy into a scalable agent loan product — mapping eligibility rules, building automated collections infrastructure, and designing the agent-facing tools that made credit accessible and manageable across hundreds of field agents in rural Kenya.</p>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Copia Kenya Ltd</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Business Analyst / PM</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Domain</div><div class="cs-meta-value">Credit · Fintech · Agent Networks</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Market</div><div class="cs-meta-value">Kenya · B2B2C</div></div>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="cs-section">
+          <div class="cs-section-label">Context</div>
+          <h4 class="cs-section-title">A distributed agent network with no formal credit infrastructure</h4>
+          <p class="cs-text">Copia Kenya operated through a network of <strong>hundreds of agents</strong> — micro-entrepreneurs who took orders from rural customers and fulfilled them through Copia's supply chain. These agents needed access to credit to stock inventory and grow their businesses, but there was <strong>no formal loan product, no eligibility system, and no collections mechanism</strong> in place.</p>
+          <p class="cs-text">The credit function existed as a manual process scattered across spreadsheets, credit team judgement calls, and informal tracking. The product gap was significant — and the risk of getting it wrong was real.</p>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Problem</div>
+          <h4 class="cs-section-title">Three problems compounding each other simultaneously</h4>
+          <ul class="cs-list">
+            <li><strong>No structured eligibility:</strong> Credit decisions were inconsistent and dependent on individual credit officers — there was no systematic way to assess agent risk at scale</li>
+            <li><strong>No automated collections:</strong> Loan repayments were tracked manually, creating delays, errors, and a growing default risk that was hard to see in real time</li>
+            <li><strong>Agent-facing tools were absent:</strong> Agents had no visibility into their loan status, repayment schedules, or eligibility — leading to confusion, disputes, and low trust in the product</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">What I Did</div>
+          <h4 class="cs-section-title">Translated policy into a working product system</h4>
+          <ul class="cs-list">
+            <li><strong>Mapped the entire credit journey</strong> — from agent application to approval, disbursement, repayment, and default — identifying every decision point that needed a rule, a tool, or a workflow</li>
+            <li><strong>Designed the loan eligibility framework:</strong> Defined scoring criteria based on order history, tenure, repayment behaviour, and agent tier — then translated these into the Odoo loan module configuration</li>
+            <li><strong>Built automated collections enforcement:</strong> Designed the logic for automatic loan deductions from agent commissions and order payments, reducing the need for manual follow-up and eliminating the spreadsheet-based tracking that preceded it</li>
+            <li><strong>Managed the Odoo loan module end-to-end:</strong> Configuration, UAT, agent training documentation, and ongoing iteration based on credit team and agent feedback</li>
+            <li><strong>Designed agent-facing visibility tools:</strong> Loan status, repayment schedule tracking, and eligibility notifications — so agents could understand their credit standing without calling the credit team</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Key Decisions</div>
+          <h4 class="cs-section-title">Where I had to make real calls</h4>
+          <ul class="cs-list">
+            <li><strong>Automate collections first, not last:</strong> I pushed to prioritise the collections automation before scaling disbursements — because growing the loan book without a reliable repayment system would compound the default risk exponentially</li>
+            <li><strong>Build for the agent, not the credit officer:</strong> The natural instinct was to build tools for credit analysts. I argued for investing in agent-facing features first — eligibility visibility, repayment tracking, status notifications — because agent trust was the product's biggest adoption risk</li>
+            <li><strong>Standardise eligibility criteria before scaling:</strong> Rather than letting individual credit officers apply their own judgement, I pushed for a documented, rule-based eligibility framework. Consistency was the only way to scale fairly and reduce the risk of perceived discrimination in the field</li>
+            <li><strong>Microinsurance integration as a risk tool, not just a benefit:</strong> Proposed embedding insurance premium collection into the loan repayment flow — framing it not as a feature add-on, but as a structural way to reduce default exposure from income shocks</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Challenges</div>
+          <h4 class="cs-section-title">What made this hard</h4>
+          <ul class="cs-list">
+            <li>Working across <strong>credit, operations, engineering, and field teams</strong> with different risk appetites, timelines, and definitions of "done"</li>
+            <li><strong>Odoo's limitations</strong> required significant configuration work to map Copia's non-standard loan structures — some edge cases needed workarounds that had to be documented carefully</li>
+            <li>Agent trust was fragile — any collections error that hit an agent incorrectly could damage the entire programme's credibility with the field force</li>
+            <li><strong>Rural infrastructure:</strong> Agents in low-connectivity areas needed processes that could function offline and sync later — standard fintech assumptions didn't hold</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Broader Outcomes</div>
+          <h4 class="cs-section-title">What the system enabled</h4>
+          <ul class="cs-list">
+            <li>A repeatable, scalable loan product that <strong>moved from manual chaos to a managed system</strong> — with defined eligibility rules, automated collections, and agent-facing visibility replacing spreadsheets and informal tracking</li>
+            <li>Credit decisions became <strong>consistent and auditable</strong> — the eligibility framework eliminated officer-by-officer variation and created a defensible, documented standard for approvals and rejections</li>
+            <li>Collections automation <strong>reduced the credit team's manual workload</strong> significantly and created a real-time view of repayment performance that hadn't existed before</li>
+            <li>The microinsurance integration created a <strong>new recurring revenue stream</strong> while simultaneously reducing default exposure from agent income shocks</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-impact-bar">
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">0<span>→1</span></div>
+          <div class="cs-impact-lbl">Credit System Built from Scratch — Policy into Product</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">Auto<span>.</span></div>
+          <div class="cs-impact-lbl">Collections Enforcement — Replaced Manual Tracking</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">Rule<span>-based</span></div>
+          <div class="cs-impact-lbl">Eligibility Framework — Consistent, Auditable Decisions</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">New<span>↑</span></div>
+          <div class="cs-impact-lbl">Microinsurance Revenue Stream — Default Risk Reduced</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects" class="section">
+  <div class="section-label"><span>All Projects</span></div>
+  <h2 class="section-heading">Every major<br><em>initiative</em> documented</h2>
+  <div class="projects-grid">
+
+    <!-- FEATURED: High Deposit -->
+    <div class="project-card featured reveal">
+      <div>
+        <span class="project-tag">Copia Kenya · Credit · Growth</span>
+        <h3 class="project-name">High-Deposit Feature: Turning Rejections into Approvals</h3>
+        <div class="project-pdim">
+          <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agents who narrowly failed affordability were hard-rejected. <strong>A significant cohort of viable borrowers was being excluded</strong> — not because they couldn't repay, but because the system had no conditional approval pathway.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Analysis of rejected applicants showed a subset had sufficient repayment history and order volume — their failure was on deposit affordability, not overall creditworthiness.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a conditional approval route: agents who failed standard affordability could qualify for a <strong>smaller loan by paying a higher upfront deposit</strong> — reducing lender risk while keeping the door open.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>+14% increase in loan approvals.</strong> Converted a rejection funnel into a qualified pipeline. Agents gained access; Copia gained lower-risk borrowers.</span></div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val"><span>+14</span>%</div><div class="metric-lbl">Approvals Unlocked</div></div>
+        <div class="metric-box"><div class="metric-val">↓<span>Risk</span></div><div class="metric-lbl">Lower-Risk Borrower Profile</div></div>
+        <div class="metric-box"><div class="metric-val">0<span>→1</span></div><div class="metric-lbl">Conditional Approval Pathway Built</div></div>
+        <div class="metric-box"><div class="metric-val">↑<span>Trust</span></div><div class="metric-lbl">Agent Trust in Credit System</div></div>
+      </div>
+    </div>
+
+    <!-- Affordability Checker -->
+    <div class="project-card reveal">
+      <span class="project-tag">MoPhones Kenya · Credit · Efficiency</span>
+      <h3 class="project-name">Agent Affordability Checker</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Agents were manually calculating affordability</strong> — using spreadsheets and guesswork — before submitting applications. This led to inconsistent data, wasted credit officer time, and high rejection rates on preventable grounds.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">The majority of rejected applications failed on predictable signals available before submission — order volume, tenure, repayment history — all knowable upfront.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Built an in-app pre-check tool surfacing eligibility signals before the full application was submitted. Agents got a real-time steer; credit officers stopped reviewing obviously unqualified applications.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>−33% affordability failures.</strong> Eliminated manual calculations. Improved submission data quality and shortened the agent decision loop.</span></div>
+      </div>
+    </div>
+
+    <!-- MoCare Insurance -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">MoPhones Kenya · Credit · Insurance</span>
+      <h3 class="project-name">MoCare Insurance Integration</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customers had no device protection during their loan tenure. When devices failed — through damage, malfunction, or theft — they faced expensive out-of-pocket repairs <strong>while payments continued,</strong> creating a direct path to default and device return.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Customer research and lab visit data confirmed that <strong>repair costs were a leading reason for device returns and loan abandonment.</strong> Customers wanted protection but couldn't absorb a separate, upfront premium on top of weekly loan payments.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed MoCare — an embedded device insurance product where <strong>premiums are collected as part of the weekly repayment flow,</strong> making insurance invisible as a separate cost and near-frictionless to enrol in.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Reduced default risk</strong> from device-related income shocks. Improved customer retention by removing the financial barrier to repair. Created a structured protection layer that gave customers a reason to stay on-loan rather than return the device.</span></div>
+      </div>
+    </div>
+
+    <!-- Turaco Microinsurance -->
+    <div class="project-card reveal">
+      <span class="project-tag">Copia Kenya · Insurance · Partnerships</span>
+      <h3 class="project-name">Turaco Microinsurance — Commission Deduction Model</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Copia agents lacked accessible insurance products. Manual signup and payment processes meant low uptake and high churn among insured agents.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a commission deduction model with Turaco — <strong>insurance premiums automatically deducted from agent commissions</strong> on a recurring basis, removing the need for agents to actively pay each cycle.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Simplified enrolment to near-zero friction.</strong> Improved retention of insured agents. Created a sustainable insurance product that aligned with how agents actually earned and spent money.</span></div>
+      </div>
+    </div>
+
+    <!-- M-Kopa Partnership -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">Copia Kenya · Asset Financing · Partnerships</span>
+      <h3 class="project-name">M-Kopa Asset Financing Partnership</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agents needed affordable smartphones and equipment to run their businesses effectively — but lacked access to structured financing for devices beyond Copia's core product.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed the integration between Copia's agent eligibility system and M-Kopa's financing product — <strong>pre-qualifying Copia agents based on their order and repayment history</strong> to unlock M-Kopa device access.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Created an additional agent benefit that improved satisfaction and retention. Reduced the digital divide within the agent network by making device access predictable and merit-based.</span></div>
+      </div>
+    </div>
+
+    <!-- NPS Research -->
+    <div class="project-card featured reveal">
+      <div>
+        <span class="project-tag">MoPhones 2025 · CX Research · Product Decisions</span>
+        <h3 class="project-name">NPS Research Programme — 300+ Responses to Sprint Items</h3>
+        <div class="project-pdim">
+          <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">MoPhones had NPS data but no systematic way to <strong>translate customer feedback into prioritised product decisions.</strong> Research was collected; action was inconsistent.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text"><strong>75% of interviewed customers flagged Payment & Lock Issues</strong> as their top pain point. 67% cited unclear grace period policies. Most had never contacted support — pointing to a self-service gap, not a support capacity gap.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Produced a tiered recommendation report (high, medium, long-term) presented to the full squad. Directly drove: a <strong>USSD self-service grace period sprint item</strong>, WhatsApp bot fixes, and an in-app device locking education campaign.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>300+ respondents compiled across 3 channels.</strong> App education banner drove <strong>1,500 clicks in month 1.</strong> Research directly shaped Q1 and Q2 sprint priorities — not filed, actioned.</span></div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">300<span>+</span></div><div class="metric-lbl">Survey Responses</div></div>
+        <div class="metric-box"><div class="metric-val">3</div><div class="metric-lbl">Channels A/B Tested</div></div>
+        <div class="metric-box"><div class="metric-val">75<span>%</span></div><div class="metric-lbl">Cited Payment Issues</div></div>
+        <div class="metric-box"><div class="metric-val">1,500</div><div class="metric-lbl">App Banner Clicks Month 1</div></div>
+      </div>
+    </div>
+
+    <!-- Zendesk -->
+    <div class="project-card reveal">
+      <span class="project-tag">MoPhones 2025 · Product · CX Infrastructure</span>
+      <h3 class="project-name">Zendesk & 3CX Integration Roadmap</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Support data was fragmented</strong> across 3CX telephony, Zendesk ticketing, and WhatsApp — making it impossible to measure first contact response time or track customer history during a call.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">CX team resistance to auto-ticket creation wasn't obstruction — it was a legitimate signal that <strong>the integration needed smarter filtering logic</strong> before deployment to production.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a phased roadmap: Phase 1 (tickets for known contacts), Phase 2 (contact sync automation), Phase 3 (live dashboard during calls). Scoped what could ship now vs. what needed more stakeholder alignment.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Full UAT passed. Phased roadmap agreed. <strong>WhatsApp bot QA identified 3 unresponsive menus</strong> — fixes scoped for sprint. CX team aligned on implementation sequence.</span></div>
+      </div>
+    </div>
+
+    <!-- Upgrade Project -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">MoPhones 2025 · Growth · Repeat Purchase</span>
+      <h3 class="project-name">Upgrade Project — Why Customers Don't Take Second Loans</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">MoPhones had a growing base of customers who completed their first loan but <strong>never re-applied.</strong> The assumption was pricing or product dissatisfaction.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">A 57-person survey found <strong>31.6% of non-upgraders were simply unaware they could re-apply.</strong> The problem wasn't the product or the price — it was the absence of an awareness and re-engagement system.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Proposed targeted SMS/in-app re-engagement campaigns at loan completion, a <strong>VIP upgrade pathway for high-repayment customers</strong>, and a competitor analysis of M-KOPA and Buy Simu upgrade models to inform incentive design.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Reframed the growth problem from "pricing" to "awareness" — <strong>a cheaper fix with a faster path to impact.</strong> Upgrade experiment plan delivered to squad with clear hypotheses and measurement criteria.</span></div>
+      </div>
+    </div>
+
+    <!-- Pilot Cohort -->
+    <div class="project-card reveal">
+      <span class="project-tag">MoPhones 2024 · Agent Systems · Growth</span>
+      <h3 class="project-name">Pilot Cohort Sales Executive Programme</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Mass agent recruitment was generating volume but not quality. <strong>Low-performing agents were draining training resources</strong> and producing high rejection rates at the credit stage.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">19 agent motivation interviews revealed that screening for sales ability and digital literacy before training — not after — was the variable that separated high performers from the rest.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a quality-first pilot: digital screening, structured interviews, 3-month tiered training pipeline (Ksh 10k → Ksh 25k retainer), field selling rotations, and performance-gated confirmation.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Week 1: 2 Y-Loans, 4 applications.</strong> Single trainer managed Week 2 solo. Validated a scalable model before expanding to 50+ offline merchant recruitment.</span></div>
+      </div>
+    </div>
+
+    <!-- Offline Merchant Network -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">MoPhones 2024 · Distribution · Field Operations</span>
+      <h3 class="project-name">Community Merchant Network & Tally–Airtable Pipeline</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Offline lead capture was invisible.</strong> Agents in the field were generating customer interest with no structured way to track, qualify, or follow up on those interactions.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Field shadowing in Ruiru revealed that <strong>micro-merchants — grocery stalls, boda boda sheds, food vendors</strong> — had existing customer trust and natural sales opportunities that MoPhones wasn't accessing.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Recruited 50 commission merchants, built the Tally Form–Airtable lead capture pipeline with unique agent links, and tested with a Facebook Ad campaign.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>8 Tally submissions + 40+ WhatsApp leads in 48 hours</strong> from a single 2-day Facebook Ad test. All 4 integration tests passed. Offline distribution model validated.</span></div>
+      </div>
+    </div>
+
+    <!-- Customer Lifecycle -->
+    <div class="project-card reveal">
+      <span class="project-tag">MoPhones 2025 · CX Lifecycle · Automation</span>
+      <h3 class="project-name">Customer Lifecycle Engagement Plan & CSAT System</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customer.io campaigns were running with <strong>no clear lifecycle map, no measurement of message effectiveness,</strong> and some campaigns sending to the wrong segments or in conflict with each other.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Audited all active campaigns, built a full lifecycle engagement plan on Miro, and designed Post-Sale and Post-Service CSAT surveys triggered automatically via Customer.io and Zendesk after key customer events.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Post-Sale CSAT live</strong> and triggering after device delivery. Grace period campaign analysis framework built. <strong>Device locking education banner: 1,500 clicks in month 1</strong> — highest-performing banner to date.</span></div>
+      </div>
+    </div>
+
+    <!-- Agent Research -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">MoPhones 2024 · Research · Agent Systems</span>
+      <h3 class="project-name">Agent Motivation Research — 19 Interviews to Q4 OKRs</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agent performance was inconsistent and management couldn't identify whether the root cause was <strong>training quality, motivation, incentive design, or recruitment filtering.</strong></span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">19 one-on-one interviews revealed three compounding gaps: training was too generic, post-training follow-up was minimal, and product knowledge was emphasised over sales technique and objection handling.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Produced a stakeholder report translating findings into 6 retraining criteria, a segmented coaching programme, and a revised training module structure — all fed directly into Q4 Agent Squad OKRs.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Research directly shaped Q4 planning.</strong> Training modules rebuilt around identified gaps. Retraining criteria adopted as the standard for performance management across the agent squad.</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EXPERIENCE TIMELINE ── -->
+<section id="experience" class="experience-section">
+  <div class="experience-inner">
+    <div class="section-label"><span>Career</span></div>
+    <h2 class="section-heading">From Field Execution<br>to <em>System Design</em></h2>
+
+    <!-- Career narrative connector -->
+    <p class="career-narrative reveal">
+      My career has evolved from leading field operations and market expansion to designing the systems that power those same environments.
+      Having worked directly with agents, customers, and regional markets, I bring a grounded understanding of how products behave outside dashboards — and use that to build systems that scale.
+    </p>
+
+    <div class="timeline">
+
+      <!-- PHASE 3 -->
+      <div class="timeline-year-divider reveal">
+        <span class="timeline-year-label">Phase 3 — Product Systems, CX &amp; Growth</span>
+        <div class="timeline-year-line"></div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date reveal">2024–2025<br><span style="color:rgba(255,255,255,0.3);font-size:0.68rem;letter-spacing:0.06em;">MoPhones Kenya</span></div>
+        <div class="timeline-content reveal reveal-delay-1">
+          <div class="timeline-role">Product Associate — Customer Experience &amp; Growth</div>
+          <div class="timeline-company">MoPhones Kenya · Nairobi</div>
+          <ul class="timeline-list">
+            <li>Designed and managed MoPhones' <strong>device credit product end-to-end</strong> — eligibility framework, repayment structure, and collections workflows from origination to close</li>
+            <li>Owned the credit eligibility framework, ensuring <strong>portfolio quality from point of origination</strong> through defined scoring criteria and submission standards</li>
+            <li>Led automation of the <strong>grace period system (2,000+ monthly requests)</strong> — defining eligibility logic, self-service flows, and success metrics; reduced CX workload by <strong>43%</strong></li>
+            <li>Drove <strong>94% growth in monthly leads</strong> through an integrated acquisition strategy spanning offline merchant networks, Facebook Ads, and Tally–Airtable pipeline integration</li>
+            <li>Designed <strong>NPS and Voice of Customer programmes</strong> — compiled 300+ responses across 3 channels; translated findings directly into sprint priorities and product decisions</li>
+            <li>Architected <strong>Zendesk &amp; 3CX integration roadmap</strong> — gap analysis, UAT, and Miro journey mapping; deployed Post-Sale CSAT with Customer.io automation</li>
+            <li>Recruited and trained <strong>50 commission merchants</strong>; app education banner drove <strong>1,500 clicks in month 1</strong>; 40+ WhatsApp leads from a single 2-day Facebook Ad test</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="timeline-year-divider reveal">
+        <span class="timeline-year-label">Phase 2 — Credit Systems &amp; Partnerships</span>
+        <div class="timeline-year-line"></div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date reveal">2022–2023<br><span style="color:rgba(255,255,255,0.3);font-size:0.68rem;letter-spacing:0.06em;">Copia Kenya</span></div>
+        <div class="timeline-content reveal reveal-delay-1">
+          <div class="timeline-role">Business Analyst — Digital Financial Services &amp; Credit Partnerships</div>
+          <div class="timeline-company">Copia Kenya Ltd · Nairobi &amp; Uganda</div>
+          <ul class="timeline-list">
+            <li>Managed Copia's <strong>agent credit system end-to-end</strong> — loan limits, repayment tracking, and collections enforcement built into the product layer via the Odoo loan module</li>
+            <li>Owned the Odoo loan module configuration, ensuring <strong>real-time reflection of agent creditworthiness</strong> and repayment behaviour across the field network</li>
+            <li>Designed <strong>system-level collections enforcement</strong>: agents who defaulted automatically lost the ability to place orders — credit risk embedded directly into operational access</li>
+            <li>Led credit and insurance partnerships: <strong>Turaco</strong> (commission deduction model — near-zero friction enrolment) and <strong>M-Kopa</strong> (asset financing integration — pre-qualifying agents by repayment history)</li>
+            <li>Managed <strong>DFS portfolio across Kenya and Uganda</strong>, adapting credit products for new markets and regulatory environments</li>
+            <li>Supported <strong>Uganda market expansion</strong> — localising credit systems, onboarding partners, and adapting the eligibility framework to a new geography</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="timeline-year-divider reveal">
+        <span class="timeline-year-label">Phase 1 — Field &amp; Market Building</span>
+        <div class="timeline-year-line"></div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date reveal">Earlier<br><span style="color:rgba(255,255,255,0.3);font-size:0.68rem;letter-spacing:0.06em;">Field Roles</span></div>
+        <div class="timeline-content reveal reveal-delay-1">
+          <div class="timeline-role">Zonal Sales Manager / Area Sales Manager · Agent Marketing &amp; Digital Programmes Manager · Sales Project Manager</div>
+          <div class="timeline-company">Field Operations · Kenya (5+ Counties)</div>
+          <ul class="timeline-list">
+            <li>Led <strong>field-based teams across 5+ counties</strong>, consistently achieving 90%+ of KPIs across sales volume, agent activation, and customer acquisition targets</li>
+            <li>Increased <strong>sales productivity by 50% and customer satisfaction by 20%</strong> through structured coaching programmes, performance management frameworks, and targeted retraining</li>
+            <li>Spearheaded the <strong>Western Region expansion</strong> — coordinating sales, credit, operations, and logistics across a new geography; delivered <strong>95% regional revenue growth within 6 months</strong></li>
+            <li>Built partnerships with <strong>institutional stakeholders and community leaders</strong> across multiple regions — creating the trust infrastructure needed for agent network growth</li>
+            <li>Increased <strong>digital product adoption to 80%</strong> among agents and customers through structured training programmes, onboarding rollouts, and ongoing coaching on digital tools</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills" class="skills-section">
+  <div class="skills-inner">
+    <div class="skills-intro reveal">
+      <div class="section-label"><span>Toolkit</span></div>
+      <h2 class="section-heading" style="font-size:2rem;">Skills &<br><em>tools</em></h2>
+      <p>From credit system design to field operations to CX research — I work across the full stack of product management wherever the problem lives.</p>
+    </div>
+    <div class="skills-clusters">
+      <div class="reveal">
+        <div class="skill-cluster-title">Credit & Loan Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Loan Eligibility Design</span><span class="skill-tag">Collections Automation</span><span class="skill-tag">Affordability Frameworks</span><span class="skill-tag">Risk Design</span><span class="skill-tag">Grace Period Systems</span><span class="skill-tag">Microinsurance Integration</span><span class="skill-tag">Odoo Loan Module</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-cluster-title">Product Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">User Story Writing</span><span class="skill-tag">Sprint Planning</span><span class="skill-tag">OKR Framework</span><span class="skill-tag">Roadmap Design</span><span class="skill-tag">BRICE Prioritisation</span><span class="skill-tag">UAT & QA</span><span class="skill-tag">Product-Led Growth</span><span class="skill-tag">Go-to-Market</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="skill-cluster-title">Research & Customer Insights</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Qualitative Interviews</span><span class="skill-tag">NPS Survey Design</span><span class="skill-tag">CSAT Framework</span><span class="skill-tag">Field Observation</span><span class="skill-tag">Competitive Research</span><span class="skill-tag">Persona Mapping</span><span class="skill-tag">A/B Testing</span><span class="skill-tag">Voice of Customer</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="skill-cluster-title">CX Strategy & Lifecycle</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Customer Journey Mapping</span><span class="skill-tag">CX Process Design</span><span class="skill-tag">Campaign Auditing</span><span class="skill-tag">Zendesk Optimisation</span><span class="skill-tag">WhatsApp Bot Design</span><span class="skill-tag">USSD Flow Design</span><span class="skill-tag">Support Workflow Design</span><span class="skill-tag">Lifecycle Engagement</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-cluster-title">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Airtable</span><span class="skill-tag">Tally Forms</span><span class="skill-tag">Typeform</span><span class="skill-tag">Customer.io</span><span class="skill-tag">Zendesk</span><span class="skill-tag">3CX</span><span class="skill-tag">Holistics</span><span class="skill-tag">Amplitude</span><span class="skill-tag">Telerivet</span><span class="skill-tag">Rapidbott</span><span class="skill-tag">Google Analytics / GTM</span><span class="skill-tag">Notion</span><span class="skill-tag">Miro</span><span class="skill-tag">Facebook Ads</span><span class="skill-tag">Shopify</span><span class="skill-tag">Odoo</span><span class="skill-tag">NuovoPay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSIGHTS ── -->
+<section class="section">
+  <div class="section-label"><span>Field Intelligence</span></div>
+  <h2 class="section-heading">Insights from the<br><em>ground up</em></h2>
+  <div class="insights-grid">
+    <div class="insight-card reveal">
+      <p class="insight-quote">31.6% of customers who completed their first loan and never came back were simply unaware they could re-apply. The growth problem wasn't the product — it was the silence after repayment.</p>
+      <div class="insight-source">Upgrade Project Survey — 57 Respondents · Mar 2025</div>
+    </div>
+    <div class="insight-card reveal reveal-delay-1">
+      <p class="insight-quote">75% of interviewed customers flagged Payment & Lock Issues as their top pain point — yet most had never contacted support. The problem was self-service, not service capacity.</p>
+      <div class="insight-source">Customer Interview Research — 31+ Interviews · Feb 2025</div>
+    </div>
+    <div class="insight-card reveal reveal-delay-2">
+      <p class="insight-quote">Agents who narrowly failed affordability weren't bad borrowers — they just needed a different pathway. The high-deposit feature turned a hard rejection into a conditional yes, and approvals went up 14%.</p>
+      <div class="insight-source">Credit System Design · Copia Kenya · 2022–2023</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="contact-section">
+  <div class="contact-bg"></div>
+  <div class="contact-inner">
+    <p class="contact-eyebrow">Get In Touch</p>
+    <h2 class="contact-heading">Ready to build<br>something <em>real</em><br>together?</h2>
+    <p class="contact-sub">If you're building a credit product, a CX system, or a growth engine in a complex market — I'd love to connect and see where I can add value.</p>
+    <div class="contact-links">
+      <a href="mailto:your.email@example.com" class="btn-primary">Send an Email ↗</a>
+      <a href="https://linkedin.com/in/your-profile" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Annah Gilbert — Product Manager</p>
+  <p>Built with intention · Nairobi, Kenya</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.getAttribute('id'); });
+    navLinks.forEach(link => { link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--terracotta)' : ''; });
+  });
+</script>
+</body>
+</html>
