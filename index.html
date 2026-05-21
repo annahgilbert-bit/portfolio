@@ -48,10 +48,10 @@
   .btn-primary:hover { background: #a84830; transform: translateY(-2px); }
   .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--ink); padding: 14px 28px; border: 1.5px solid var(--ink); border-radius: 2px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; transition: all 0.25s; }
   .btn-secondary:hover { background: var(--ink); color: var(--cream); }
-  .hero-right { background: var(--ink); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 48px; }
+  .hero-right { background: var(--ink); position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 48px; min-height: 100%; }
   .hero-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 20%, rgba(196,89,58,0.25) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(184,146,58,0.15) 0%, transparent 50%); }
   .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 40px 40px; }
-  .hero-stats { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; flex-shrink: 0; }
   .stat-card { background: rgba(255,255,255,0.06); padding: 28px 24px; border: 1px solid rgba(255,255,255,0.08); opacity: 0; animation: fadeIn 1s ease forwards; }
   .stat-card:nth-child(1){animation-delay:0.6s} .stat-card:nth-child(2){animation-delay:0.75s} .stat-card:nth-child(3){animation-delay:0.9s} .stat-card:nth-child(4){animation-delay:1.05s}
   .stat-number { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--white); line-height: 1; margin-bottom: 8px; }
@@ -233,7 +233,7 @@
   .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 24px; }
   .contact-heading em { font-style: italic; color: var(--terracotta); }
   .contact-sub { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.5); margin-bottom: 48px; }
-  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 0 16px; }
 
   footer { background: #080807; padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
   footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
@@ -246,10 +246,38 @@
   .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* ── RESPONSIVE ── */
+  /* ── HERO RIGHT INNER (PLA + STATS) ── */
+  .hero-right-inner { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 0; }
+  .pla-block { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-left: 2px solid var(--warm-gold); padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; margin-bottom: 2px; }
+  .pla-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 14px; opacity: 0.8; }
+  .pla-title { font-family: 'Playfair Display', serif; font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-weight: 700; color: var(--white); margin-bottom: 24px; line-height: 1.35; }
+  .pla-title span { font-weight: 400; font-style: italic; color: rgba(255,255,255,0.6); }
+  .pla-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .pla-list li { font-size: clamp(0.82rem, 1.2vw, 0.92rem); line-height: 1.65; color: rgba(255,255,255,0.55); padding-left: 18px; position: relative; }
+  .pla-list li::before { content: '✦'; position: absolute; left: 0; color: var(--warm-gold); font-size: 0.55rem; top: 5px; }
+
+  /* ── FLAGSHIP LABEL ── */
+  .flagship-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gold); border: 1px solid rgba(184,146,58,0.35); padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 8px; }
+  .project-section-divider { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 24px 0 8px; }
+  .project-section-divider-label { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--terracotta); white-space: nowrap; }
+  .project-section-divider-line { flex: 1; height: 1px; background: rgba(15,14,10,0.1); }
+
+  /* ── CONTACT LINKS (PREMIUM) ── */
+  .contact-link-item { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 2px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; transition: all 0.25s; max-width: 100%; word-break: break-all; }
+  .contact-link-email { background: var(--terracotta); color: var(--white); text-transform: lowercase; font-size: clamp(0.72rem, 1.4vw, 0.85rem); }
+  .contact-link-email:hover { background: #a84830; transform: translateY(-2px); }
+  .contact-link-linkedin { background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.2); text-transform: lowercase; font-size: clamp(0.72rem, 1.4vw, 0.85rem); letter-spacing: 0.06em; }
+  .contact-link-linkedin:hover { background: rgba(255,255,255,0.08); color: var(--white); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+  .contact-link-icon { font-size: 0.9rem; opacity: 0.8; flex-shrink: 0; }
+
+  /* ── CASE STUDY 2 (GRACE PERIOD) — uses existing cs-* classes ── */
+  .case-study-card + .case-study-card { margin-top: 3px; }
+
+  /* ── RESPONSIVE ADDITIONS ── */
   @media (max-width: 960px) {
     nav { padding: 18px 24px; } .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; } .hero-right { min-height: 380px; } .hero-left { padding: 60px 24px; }
+    .hero { grid-template-columns: 1fr; } .hero-right { min-height: auto; padding: 40px 24px; } .hero-left { padding: 60px 24px; }
+    .hero-right-inner { gap: 24px; }
     .expertise-grid, .approach-grid, .pillars-grid, .impact-cards-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; } .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
     .timeline { grid-template-columns: 100px 1fr; }
@@ -298,23 +326,40 @@
   <div class="hero-right">
     <div class="hero-pattern"></div>
     <div class="hero-grid"></div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-number"><span>+14</span>%</div>
-        <div class="stat-label">Loan Approvals Unlocked via High-Deposit Feature</div>
+    <div class="hero-right-inner">
+
+      <!-- PLA Fellowship block -->
+      <div class="pla-block">
+        <div class="pla-eyebrow">Current · Leadership Programme</div>
+        <div class="pla-title">PLA Fellow <span>— Product Leadership Accelerator '26</span></div>
+        <ul class="pla-list">
+          <li>Selected for a competitive pan-African product leadership programme</li>
+          <li>Strengthening product strategy, roadmap execution &amp; cross-functional leadership</li>
+          <li>Collaborating with product professionals across Africa on real-world product challenges</li>
+          <li>Applying structured thinking to prioritisation &amp; customer-centric problem solving</li>
+        </ul>
       </div>
-      <div class="stat-card">
-        <div class="stat-number"><span>−33</span>%</div>
-        <div class="stat-label">Affordability Failures After Checker Launch</div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number"><span>+14</span>%</div>
+          <div class="stat-label">Loan Approvals Unlocked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>−33</span>%</div>
+          <div class="stat-label">Affordability Failures Reduced</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2,000<span>+</span></div>
+          <div class="stat-label">Grace Period Requests Automated</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">300<span>+</span></div>
+          <div class="stat-label">Customer Insights Driving Product Decisions</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">300<span>+</span></div>
-        <div class="stat-label">Customer Responses Driving Product Decisions</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">50<span>+</span></div>
-        <div class="stat-label">Merchants Recruited Into Offline Distribution</div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -475,8 +520,8 @@
 <!-- ── CASE STUDY ── -->
 <section id="case-study" class="case-study-section">
   <div class="case-study-inner">
-    <div class="section-label"><span>Featured Case Study</span></div>
-    <h2 class="section-heading">Deep work, <em>documented</em></h2>
+    <div class="section-label"><span>Flagship Case Studies</span></div>
+    <h2 class="section-heading">Deep work,<br><em>documented</em></h2>
 
     <div class="case-study-card reveal">
       <div class="cs-header">
@@ -579,15 +624,125 @@
   </div>
 </section>
 
+<!-- ── CASE STUDY #2 : GRACE PERIOD AUTOMATION ── -->
+<section class="case-study-section" style="padding-top:3px;">
+  <div class="case-study-inner">
+
+    <div class="case-study-card reveal">
+      <div class="cs-header">
+        <div>
+          <div class="cs-badge">MoPhones Kenya · CX Automation &amp; Self-Service Systems</div>
+          <h3 class="cs-title">Grace Period Automation —<br>From 2,000 Manual Requests to Self-Service</h3>
+          <p class="cs-subtitle">How I mapped a high-volume, manually handled support workflow, identified the root causes of repeat requests, and designed an automated self-service system that resolved the majority of cases without human intervention — reducing CX workload by 43%.</p>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">MoPhones Kenya</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Product Associate / PM</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Domain</div><div class="cs-meta-value">CX · Automation · Self-Service</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Scale</div><div class="cs-meta-value">2,000+ Requests/Month</div></div>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="cs-section">
+          <div class="cs-section-label">Situation</div>
+          <h4 class="cs-section-title">A 2,000-request-per-month support bottleneck with no self-service path</h4>
+          <p class="cs-text">MoPhones customers on device credit loans could request a grace period when facing payment difficulties — a temporary extension before the device would lock. With <strong>over 2,000 such requests arriving monthly</strong>, the entire process ran through the CX team manually. Agents logged requests, verified eligibility, updated systems, and responded to customers individually.</p>
+          <p class="cs-text">The process was <strong>slow, inconsistent, and unscalable.</strong> Wait times were unpredictable. Agents spent significant time on routine eligibility checks. And customers — already under financial stress — were experiencing friction at exactly the wrong moment in the relationship.</p>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Task</div>
+          <h4 class="cs-section-title">Design a system that resolves most cases without human intervention</h4>
+          <ul class="cs-list">
+            <li><strong>Reduce CX manual workload</strong> while maintaining appropriate risk controls on who qualifies</li>
+            <li><strong>Improve customer experience</strong> — faster resolution, transparent process, no anxiety from waiting</li>
+            <li><strong>Define eligibility logic</strong> that was fair, rules-based, and could be applied automatically without officer review</li>
+            <li><strong>Instrument the system</strong> so we could measure outcomes, track abuse, and iterate on rules over time</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Action</div>
+          <h4 class="cs-section-title">Built the eligibility logic, self-service flow, and automation infrastructure</h4>
+          <ul class="cs-list">
+            <li><strong>Audited 3 months of grace period requests</strong> — categorised by reason, repayment history, frequency, and outcome — to understand who was requesting, why, and what the default correlation looked like</li>
+            <li><strong>Defined eligibility criteria:</strong> Repayment history threshold, maximum number of prior grace periods, time since last request, and loan tenure — translating risk policy into product-executable rules</li>
+            <li><strong>Designed the self-service USSD and in-app flow</strong> — customers could request a grace period, see their eligibility status, and receive confirmation in real time without contacting support</li>
+            <li><strong>Coordinated with engineering</strong> on NuovoPay integration to automate device lock/unlock state changes based on grace period approval — removing the manual CX step entirely for qualifying cases</li>
+            <li><strong>Built the measurement framework</strong> — tracking auto-approve rate, manual escalation rate, grace period default correlation, and customer satisfaction with the new flow</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Result</div>
+          <h4 class="cs-section-title">43% reduction in CX manual workload — at scale</h4>
+          <ul class="cs-list">
+            <li><strong>43% of monthly grace period requests</strong> now resolved automatically through self-service — no CX agent required</li>
+            <li>Customer resolution time dropped from <strong>multi-day to near-instant</strong> for eligible requests</li>
+            <li>Escalation queue reduced significantly — CX team capacity freed for complex, edge-case handling that genuinely required human judgement</li>
+            <li><strong>No increase in grace period default rate</strong> — the eligibility rules maintained risk quality while improving experience</li>
+          </ul>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Reflection</div>
+          <h4 class="cs-section-title">What this project is really about</h4>
+          <p class="cs-text">The grace period system isn't just a CX efficiency project. <strong>It's a risk management product</strong> — because the decision about who gets a grace period, how many times, and under what conditions directly affects the default rate and the device recovery economics.</p>
+          <p class="cs-text">The key design tension was: make it easy enough that stressed customers can access it at 11pm without calling support, but structured enough that it doesn't become an exploit. <strong>Getting that balance right required understanding the customer behaviour data first</strong> — and the audit of 3 months of prior requests made that possible.</p>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section-label">Broader Outcomes</div>
+          <h4 class="cs-section-title">What the automation enabled</h4>
+          <ul class="cs-list">
+            <li>A <strong>scalable support infrastructure</strong> — volume can grow without proportionally growing the CX team</li>
+            <li>Consistent, <strong>policy-aligned decisions</strong> — no more variation based on which agent handled the request</li>
+            <li>A customer experience that <strong>builds trust at a moment of financial stress</strong> — faster, clearer, and less reliant on human availability</li>
+            <li>A template for automating other high-volume, rules-based CX workflows across the product</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-impact-bar">
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">2,000<span>+</span></div>
+          <div class="cs-impact-lbl">Monthly Requests — System Designed to Handle at Scale</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num"><span>−43</span>%</div>
+          <div class="cs-impact-lbl">CX Manual Workload Reduction</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">Real<span>-time</span></div>
+          <div class="cs-impact-lbl">Customer Resolution — From Multi-Day to Instant</div>
+        </div>
+        <div class="cs-impact-metric">
+          <div class="cs-impact-num">0<span>↑Risk</span></div>
+          <div class="cs-impact-lbl">Default Rate Unchanged — Risk Controls Held</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── PROJECTS ── -->
 <section id="projects" class="section">
   <div class="section-label"><span>All Projects</span></div>
   <h2 class="section-heading">Every major<br><em>initiative</em> documented</h2>
   <div class="projects-grid">
 
+    <!-- SECTION: CREDIT SYSTEMS -->
+    <div class="project-section-divider">
+      <span class="project-section-divider-label">Credit &amp; Loan Systems</span>
+      <div class="project-section-divider-line"></div>
+    </div>
+
     <!-- FEATURED: High Deposit -->
     <div class="project-card featured reveal">
       <div>
+        <span class="flagship-label">Flagship</span>
         <span class="project-tag">Copia Kenya · Credit · Growth</span>
         <h3 class="project-name">High-Deposit Feature: Turning Rejections into Approvals</h3>
         <div class="project-pdim">
@@ -611,7 +766,7 @@
       <h3 class="project-name">Agent Affordability Checker</h3>
       <div class="project-pdim">
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Agents were manually calculating affordability</strong> — using spreadsheets and guesswork — before submitting applications. This led to inconsistent data, wasted credit officer time, and high rejection rates on preventable grounds.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">The majority of rejected applications failed on predictable signals available before submission — order volume, tenure, repayment history — all knowable upfront.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">The majority of rejected applications failed on predictable eligibility signals — repayment history, order volume, tenure — all available before submission.</span></div>
         <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Built an in-app pre-check tool surfacing eligibility signals before the full application was submitted. Agents got a real-time steer; credit officers stopped reviewing obviously unqualified applications.</span></div>
         <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>−33% affordability failures.</strong> Eliminated manual calculations. Improved submission data quality and shortened the agent decision loop.</span></div>
       </div>
@@ -622,43 +777,50 @@
       <span class="project-tag">MoPhones Kenya · Credit · Insurance</span>
       <h3 class="project-name">MoCare Insurance Integration</h3>
       <div class="project-pdim">
-        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customers had no device protection during their loan tenure. When devices failed — through damage, malfunction, or theft — they faced expensive out-of-pocket repairs <strong>while payments continued,</strong> creating a direct path to default and device return.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Customer research and lab visit data confirmed that <strong>repair costs were a leading reason for device returns and loan abandonment.</strong> Customers wanted protection but couldn't absorb a separate, upfront premium on top of weekly loan payments.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed MoCare — an embedded device insurance product where <strong>premiums are collected as part of the weekly repayment flow,</strong> making insurance invisible as a separate cost and near-frictionless to enrol in.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Reduced default risk</strong> from device-related income shocks. Improved customer retention by removing the financial barrier to repair. Created a structured protection layer that gave customers a reason to stay on-loan rather than return the device.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customers had no device protection during their loan tenure. Device failures created a direct path to default — <strong>repair costs continued while payments were still due.</strong></span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Customer research confirmed repair costs were a leading reason for device returns and loan abandonment. Customers wanted protection but couldn't absorb a separate upfront premium.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed MoCare — embedded device insurance where <strong>premiums are collected within the weekly repayment flow,</strong> making enrolment near-frictionless and the cost invisible as a separate line item.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Reduced default risk</strong> from device shocks. Improved retention. Created a structural protection layer giving customers a reason to stay on-loan rather than return the device.</span></div>
       </div>
     </div>
 
-    <!-- Turaco Microinsurance -->
+    <!-- Turaco -->
     <div class="project-card reveal">
       <span class="project-tag">Copia Kenya · Insurance · Partnerships</span>
       <h3 class="project-name">Turaco Microinsurance — Commission Deduction Model</h3>
       <div class="project-pdim">
-        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Copia agents lacked accessible insurance products. Manual signup and payment processes meant low uptake and high churn among insured agents.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Copia agents lacked accessible insurance. Manual signup and payment processes meant low uptake and high churn among insured agents.</span></div>
         <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a commission deduction model with Turaco — <strong>insurance premiums automatically deducted from agent commissions</strong> on a recurring basis, removing the need for agents to actively pay each cycle.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Simplified enrolment to near-zero friction.</strong> Improved retention of insured agents. Created a sustainable insurance product that aligned with how agents actually earned and spent money.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Near-zero friction enrolment.</strong> Improved retention of insured agents. Sustainable insurance product aligned with how agents actually earn and spend.</span></div>
       </div>
     </div>
 
-    <!-- M-Kopa Partnership -->
+    <!-- M-Kopa -->
     <div class="project-card reveal reveal-delay-1">
       <span class="project-tag">Copia Kenya · Asset Financing · Partnerships</span>
       <h3 class="project-name">M-Kopa Asset Financing Partnership</h3>
       <div class="project-pdim">
-        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agents needed affordable smartphones and equipment to run their businesses effectively — but lacked access to structured financing for devices beyond Copia's core product.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed the integration between Copia's agent eligibility system and M-Kopa's financing product — <strong>pre-qualifying Copia agents based on their order and repayment history</strong> to unlock M-Kopa device access.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Created an additional agent benefit that improved satisfaction and retention. Reduced the digital divide within the agent network by making device access predictable and merit-based.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agents needed affordable device financing to operate effectively — but had no structured access to it beyond Copia's core credit product.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed the integration between Copia's eligibility system and M-Kopa's financing product — <strong>pre-qualifying agents by order and repayment history</strong> to unlock device access without a separate application.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Improved agent satisfaction and retention. Made device access merit-based and predictable — reducing the digital divide within the field network.</span></div>
       </div>
     </div>
 
-    <!-- NPS Research -->
+    <!-- SECTION: CX & GROWTH SYSTEMS -->
+    <div class="project-section-divider">
+      <span class="project-section-divider-label">CX &amp; Growth Systems</span>
+      <div class="project-section-divider-line"></div>
+    </div>
+
+    <!-- NPS Research FEATURED -->
     <div class="project-card featured reveal">
       <div>
+        <span class="flagship-label">Flagship</span>
         <span class="project-tag">MoPhones 2025 · CX Research · Product Decisions</span>
         <h3 class="project-name">NPS Research Programme — 300+ Responses to Sprint Items</h3>
         <div class="project-pdim">
           <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">MoPhones had NPS data but no systematic way to <strong>translate customer feedback into prioritised product decisions.</strong> Research was collected; action was inconsistent.</span></div>
-          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text"><strong>75% of interviewed customers flagged Payment & Lock Issues</strong> as their top pain point. 67% cited unclear grace period policies. Most had never contacted support — pointing to a self-service gap, not a support capacity gap.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text"><strong>75% of interviewed customers flagged Payment &amp; Lock Issues</strong> as their top pain point. 67% cited unclear grace period policies. Most had never contacted support — pointing to a self-service gap, not a support capacity gap.</span></div>
           <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Produced a tiered recommendation report (high, medium, long-term) presented to the full squad. Directly drove: a <strong>USSD self-service grace period sprint item</strong>, WhatsApp bot fixes, and an in-app device locking education campaign.</span></div>
           <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>300+ respondents compiled across 3 channels.</strong> App education banner drove <strong>1,500 clicks in month 1.</strong> Research directly shaped Q1 and Q2 sprint priorities — not filed, actioned.</span></div>
         </div>
@@ -674,12 +836,12 @@
     <!-- Zendesk -->
     <div class="project-card reveal">
       <span class="project-tag">MoPhones 2025 · Product · CX Infrastructure</span>
-      <h3 class="project-name">Zendesk & 3CX Integration Roadmap</h3>
+      <h3 class="project-name">Zendesk &amp; 3CX Integration Roadmap</h3>
       <div class="project-pdim">
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Support data was fragmented</strong> across 3CX telephony, Zendesk ticketing, and WhatsApp — making it impossible to measure first contact response time or track customer history during a call.</span></div>
         <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">CX team resistance to auto-ticket creation wasn't obstruction — it was a legitimate signal that <strong>the integration needed smarter filtering logic</strong> before deployment to production.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a phased roadmap: Phase 1 (tickets for known contacts), Phase 2 (contact sync automation), Phase 3 (live dashboard during calls). Scoped what could ship now vs. what needed more stakeholder alignment.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Full UAT passed. Phased roadmap agreed. <strong>WhatsApp bot QA identified 3 unresponsive menus</strong> — fixes scoped for sprint. CX team aligned on implementation sequence.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed a phased roadmap: Phase 1 (tickets for known contacts), Phase 2 (contact sync), Phase 3 (live dashboard during calls). Scoped what could ship now vs. what needed more alignment.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Full UAT passed. Phased roadmap agreed. <strong>WhatsApp bot QA identified 3 unresponsive menus</strong> — fixes scoped for sprint. CX team aligned on sequence.</span></div>
       </div>
     </div>
 
@@ -690,13 +852,61 @@
       <div class="project-pdim">
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">MoPhones had a growing base of customers who completed their first loan but <strong>never re-applied.</strong> The assumption was pricing or product dissatisfaction.</span></div>
         <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">A 57-person survey found <strong>31.6% of non-upgraders were simply unaware they could re-apply.</strong> The problem wasn't the product or the price — it was the absence of an awareness and re-engagement system.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Proposed targeted SMS/in-app re-engagement campaigns at loan completion, a <strong>VIP upgrade pathway for high-repayment customers</strong>, and a competitor analysis of M-KOPA and Buy Simu upgrade models to inform incentive design.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Reframed the growth problem from "pricing" to "awareness" — <strong>a cheaper fix with a faster path to impact.</strong> Upgrade experiment plan delivered to squad with clear hypotheses and measurement criteria.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Proposed targeted SMS/in-app re-engagement campaigns at loan completion, a <strong>VIP upgrade pathway for high-repayment customers</strong>, and competitor analysis of M-KOPA and Buy Simu upgrade models.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Reframed the growth problem from "pricing" to "awareness" — <strong>a cheaper fix with a faster path to impact.</strong> Upgrade experiment plan delivered with clear hypotheses and measurement criteria.</span></div>
+      </div>
+    </div>
+
+    <!-- Customer Lifecycle -->
+    <div class="project-card reveal">
+      <span class="project-tag">MoPhones 2025 · CX Lifecycle · Automation</span>
+      <h3 class="project-name">Customer Lifecycle Engagement Plan &amp; CSAT System</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customer.io campaigns were running with <strong>no clear lifecycle map, no measurement of message effectiveness,</strong> and some campaigns sending to the wrong segments or in conflict with each other.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Audited all active campaigns, built a full lifecycle engagement plan on Miro, and designed Post-Sale and Post-Service CSAT surveys triggered automatically via Customer.io and Zendesk after key customer events.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Post-Sale CSAT live</strong> after device delivery. Grace period campaign analysis framework built. <strong>Device locking banner: 1,500 clicks in month 1</strong> — highest-performing banner to date.</span></div>
+      </div>
+    </div>
+
+    <!-- SECTION: FIELD & DISTRIBUTION -->
+    <div class="project-section-divider">
+      <span class="project-section-divider-label">Field &amp; Distribution Systems</span>
+      <div class="project-section-divider-line"></div>
+    </div>
+
+    <!-- Western Region Expansion -->
+    <div class="project-card featured reveal">
+      <div>
+        <span class="project-tag">Field Operations · Kenya · Regional Expansion</span>
+        <h3 class="project-name">Western Region Expansion — 95% Revenue Growth in 6 Months</h3>
+        <div class="project-pdim">
+          <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">The Western Region represented a significant untapped market — but required <strong>simultaneous coordination across sales, credit, operations, and logistics</strong> in a geography with limited infrastructure and no established agent base.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Field research confirmed strong latent demand — but conversion required <strong>community trust-building with local leaders</strong> before standard agent recruitment and onboarding approaches would work.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Led cross-functional rollout: structured agent recruitment and screening, localised training programme, partnerships with institutional stakeholders and community leaders, and a logistics model adapted for rural last-mile delivery.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>95% regional revenue growth within 6 months.</strong> Agent network established across multiple counties. Distribution and trust infrastructure built — enabling continued organic growth beyond the initial expansion phase.</span></div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">95<span>%</span></div><div class="metric-lbl">Regional Revenue Growth</div></div>
+        <div class="metric-box"><div class="metric-val">6<span>mo</span></div><div class="metric-lbl">Delivery Timeline</div></div>
+        <div class="metric-box"><div class="metric-val">5<span>+</span></div><div class="metric-lbl">Counties Activated</div></div>
+        <div class="metric-box"><div class="metric-val">↑80<span>%</span></div><div class="metric-lbl">Digital Adoption Among Agents</div></div>
+      </div>
+    </div>
+
+    <!-- Uganda Expansion -->
+    <div class="project-card reveal">
+      <span class="project-tag">Copia Kenya · Regional Markets · Uganda</span>
+      <h3 class="project-name">Uganda Market Expansion — Localising Credit Systems</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Expanding DFS operations to Uganda required adapting credit systems, eligibility frameworks, and partner onboarding processes to a <strong>new regulatory environment, different market dynamics, and an unfamiliar partner landscape.</strong></span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Led the Uganda DFS workstream — localising the credit eligibility framework, adapting collections logic for local repayment norms, onboarding new financial and insurance partners, and documenting the market-specific configuration of the Odoo loan module.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Credit operations successfully launched in Uganda.</strong> Local partners onboarded. Systems adapted without rebuilding from scratch — demonstrating the portability of the credit infrastructure built in Kenya.</span></div>
       </div>
     </div>
 
     <!-- Pilot Cohort -->
-    <div class="project-card reveal">
+    <div class="project-card reveal reveal-delay-1">
       <span class="project-tag">MoPhones 2024 · Agent Systems · Growth</span>
       <h3 class="project-name">Pilot Cohort Sales Executive Programme</h3>
       <div class="project-pdim">
@@ -708,25 +918,14 @@
     </div>
 
     <!-- Offline Merchant Network -->
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal">
       <span class="project-tag">MoPhones 2024 · Distribution · Field Operations</span>
-      <h3 class="project-name">Community Merchant Network & Tally–Airtable Pipeline</h3>
+      <h3 class="project-name">Community Merchant Network &amp; Tally–Airtable Pipeline</h3>
       <div class="project-pdim">
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text"><strong>Offline lead capture was invisible.</strong> Agents in the field were generating customer interest with no structured way to track, qualify, or follow up on those interactions.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Field shadowing in Ruiru revealed that <strong>micro-merchants — grocery stalls, boda boda sheds, food vendors</strong> — had existing customer trust and natural sales opportunities that MoPhones wasn't accessing.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Field shadowing in Ruiru revealed that <strong>micro-merchants — grocery stalls, boda boda sheds, food vendors</strong> — had existing customer trust and natural sales opportunities MoPhones wasn't accessing.</span></div>
         <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Recruited 50 commission merchants, built the Tally Form–Airtable lead capture pipeline with unique agent links, and tested with a Facebook Ad campaign.</span></div>
         <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>8 Tally submissions + 40+ WhatsApp leads in 48 hours</strong> from a single 2-day Facebook Ad test. All 4 integration tests passed. Offline distribution model validated.</span></div>
-      </div>
-    </div>
-
-    <!-- Customer Lifecycle -->
-    <div class="project-card reveal">
-      <span class="project-tag">MoPhones 2025 · CX Lifecycle · Automation</span>
-      <h3 class="project-name">Customer Lifecycle Engagement Plan & CSAT System</h3>
-      <div class="project-pdim">
-        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customer.io campaigns were running with <strong>no clear lifecycle map, no measurement of message effectiveness,</strong> and some campaigns sending to the wrong segments or in conflict with each other.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Audited all active campaigns, built a full lifecycle engagement plan on Miro, and designed Post-Sale and Post-Service CSAT surveys triggered automatically via Customer.io and Zendesk after key customer events.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Post-Sale CSAT live</strong> and triggering after device delivery. Grace period campaign analysis framework built. <strong>Device locking education banner: 1,500 clicks in month 1</strong> — highest-performing banner to date.</span></div>
       </div>
     </div>
 
@@ -738,7 +937,7 @@
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Agent performance was inconsistent and management couldn't identify whether the root cause was <strong>training quality, motivation, incentive design, or recruitment filtering.</strong></span></div>
         <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">19 one-on-one interviews revealed three compounding gaps: training was too generic, post-training follow-up was minimal, and product knowledge was emphasised over sales technique and objection handling.</span></div>
         <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Produced a stakeholder report translating findings into 6 retraining criteria, a segmented coaching programme, and a revised training module structure — all fed directly into Q4 Agent Squad OKRs.</span></div>
-        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Research directly shaped Q4 planning.</strong> Training modules rebuilt around identified gaps. Retraining criteria adopted as the standard for performance management across the agent squad.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Research directly shaped Q4 planning.</strong> Training modules rebuilt around identified gaps. Retraining criteria adopted as the standard for performance management.</span></div>
       </div>
     </div>
 
@@ -900,8 +1099,14 @@
     <h2 class="contact-heading">Ready to build<br>something <em>real</em><br>together?</h2>
     <p class="contact-sub">If you're building a credit product, a CX system, or a growth engine in a complex market — I'd love to connect and see where I can add value.</p>
     <div class="contact-links">
-      <a href="mailto:your.email@example.com" class="btn-primary">Send an Email ↗</a>
-      <a href="https://linkedin.com/in/your-profile" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+      <a href="mailto:annahgilbertmwikali@gmail.com" class="contact-link-item contact-link-email">
+        <span class="contact-link-icon">✉</span>
+        annahgilbertmwikali@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/annah-gilbert/" target="_blank" rel="noopener noreferrer" class="contact-link-item contact-link-linkedin">
+        <span class="contact-link-icon">in</span>
+        linkedin.com/in/annah-gilbert
+      </a>
     </div>
   </div>
 </section>
