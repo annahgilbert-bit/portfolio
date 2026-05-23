@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Annah Gilbert — Product Manager</title>
+<title>Annah Gilbert — Product Manager · Systems, Growth & CX</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -262,6 +262,22 @@
   .project-section-divider-label { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--terracotta); white-space: nowrap; }
   .project-section-divider-line { flex: 1; height: 1px; background: rgba(15,14,10,0.1); }
 
+  /* ── STRATEGIC SYSTEMS DIVIDER (muted, subordinate to flagships) ── */
+  .project-section-divider.strategic .project-section-divider-label { color: var(--warm-gold); font-size: 0.85rem; font-weight: 600; opacity: 0.85; }
+  .project-section-divider.strategic .project-section-divider-line { background: rgba(184,146,58,0.2); }
+
+  /* ── PERSONA ECOSYSTEM VISUAL ── */
+  .persona-ecosystem { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 20px; }
+  .persona-chip { background: rgba(196,89,58,0.06); border: 1px solid rgba(196,89,58,0.15); padding: 12px 16px; }
+  .persona-chip-name { font-family: 'Playfair Display', serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .persona-chip-desc { font-size: 0.75rem; color: var(--light-slate); line-height: 1.4; }
+
+  /* ── SYSTEM LAYER VISUAL ── */
+  .system-layers { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
+  .system-layer { background: rgba(184,146,58,0.06); border-left: 2px solid rgba(184,146,58,0.3); padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+  .system-layer-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gold); min-width: 100px; flex-shrink: 0; }
+  .system-layer-tools { font-size: 0.78rem; color: var(--light-slate); line-height: 1.4; }
+
   /* ── CONTACT LINKS (PREMIUM) ── */
   .contact-link-item { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 2px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; transition: all 0.25s; max-width: 100%; word-break: break-all; }
   .contact-link-email { background: var(--terracotta); color: var(--white); text-transform: lowercase; font-size: clamp(0.72rem, 1.4vw, 0.85rem); }
@@ -343,20 +359,20 @@
       <!-- Stats -->
       <div class="hero-stats">
         <div class="stat-card">
+          <div class="stat-number"><span>+94</span>%</div>
+          <div class="stat-label">Monthly Leads Growth</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>−43</span>%</div>
+          <div class="stat-label">Manual Support Workload</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">99<span>%</span></div>
+          <div class="stat-label">Automated Resolution Rate</div>
+        </div>
+        <div class="stat-card">
           <div class="stat-number"><span>+14</span>%</div>
           <div class="stat-label">Loan Approvals Unlocked</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number"><span>−33</span>%</div>
-          <div class="stat-label">Affordability Failures Reduced</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">2,000<span>+</span></div>
-          <div class="stat-label">Grace Period Requests Automated</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">300<span>+</span></div>
-          <div class="stat-label">Customer Insights Driving Product Decisions</div>
         </div>
       </div>
 
@@ -380,18 +396,18 @@
 
     <div class="impact-card reveal reveal-delay-1">
       <span class="impact-card-icon">📈</span>
-      <h3 class="impact-card-title">Growth Unlock</h3>
-      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>+14% loan approvals unlocked</strong> by designing a high-deposit feature for customers who failed standard affordability — turning a rejection into a conditional approval pathway</span></div>
-      <div class="impact-bullet"><div class="impact-dot"></div><span>Identified a <strong>major conversion drop-off post-approval</strong> — customers approved but not disbursed — and diagnosed it as a communication and agent handoff gap</span></div>
-      <div class="impact-bullet"><div class="impact-dot"></div><span>Proposed targeted interventions that directly addressed the funnel leak before disbursement</span></div>
+      <h3 class="impact-card-title">Growth &amp; Acquisition Systems</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>+94% growth in monthly leads</strong> by integrating Meta Ads into WhatsApp acquisition flows — converting inbound ad traffic directly into a structured, trackable lead pipeline</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>+14% loan approvals unlocked</strong> by designing a high-deposit feature for customers who failed standard affordability — turning a hard rejection into a conditional approval pathway</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Designed customer referral infrastructure to <strong>convert satisfied customers into a scalable acquisition channel</strong> — anchored in community trust dynamics rather than generic discount mechanics</span></div>
     </div>
 
     <div class="impact-card reveal reveal-delay-2">
-      <span class="impact-card-icon">⚡</span>
-      <h3 class="impact-card-title">Product Efficiency</h3>
-      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>Reduced affordability failures by 33%</strong> by building a pre-check tool for agents — surfacing eligibility signals before a full application was submitted</span></div>
-      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>Eliminated manual agent affordability calculations</strong> — replaced a time-consuming, error-prone process with an automated in-app tool that standardised decisions</span></div>
-      <div class="impact-bullet"><div class="impact-dot"></div><span>Shortened the agent submission loop and improved data quality at point of entry</span></div>
+      <span class="impact-card-icon">🤖</span>
+      <h3 class="impact-card-title">AI-Assisted Automation &amp; Self-Service</h3>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>99% automated resolution rate</strong> achieved through RapidBot 2.0 rollout — redesigned WhatsApp journeys, fixed routing logic, and integrated Zendesk escalation for edge cases</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span><strong>43% reduction in manual support tickets</strong> through self-service automation across WhatsApp and in-app flows — freeing CX capacity for complex case resolution</span></div>
+      <div class="impact-bullet"><div class="impact-dot"></div><span>Built grace period self-service infrastructure handling <strong>2,000+ monthly requests</strong> — automated eligibility logic, NuovoPay integration, and real-time device state management</span></div>
     </div>
 
     <div class="impact-card reveal reveal-delay-3">
@@ -452,8 +468,8 @@
     </div>
     <div class="expertise-card reveal reveal-delay-3">
       <span class="expertise-icon">💬</span>
-      <h3 class="expertise-title">CX Strategy & Lifecycle</h3>
-      <p class="expertise-desc">Mapping the full customer lifecycle — onboarding to repayment to upgrade. Designing Customer.io campaigns, auditing SMS/WhatsApp/USSD flows, and building CSAT frameworks tied to real service outcomes.</p>
+      <h3 class="expertise-title">CX Strategy, AI &amp; Automation</h3>
+      <p class="expertise-desc">Designing WhatsApp-based customer operations infrastructure, AI-assisted support systems (RapidBot 2.0), self-service flows, and automated lifecycle campaigns. I've taken support operations from manual bottlenecks to 99% automated resolution at scale.</p>
     </div>
     <div class="expertise-card reveal reveal-delay-1">
       <span class="expertise-icon">📊</span>
@@ -471,13 +487,13 @@
 <!-- ── PRODUCT PILLARS ── -->
 <section class="pillars-section">
   <div class="pillars-inner">
-    <div class="section-label"><span>Product & System Work</span></div>
-    <h2 class="section-heading">Three areas where I've<br>built <em>real systems</em></h2>
-    <div class="pillars-grid">
+    <div class="section-label"><span>Product &amp; System Work</span></div>
+    <h2 class="section-heading">Five areas where I've<br>built <em>real systems</em></h2>
+    <div class="pillars-grid" style="grid-template-columns: repeat(3, 1fr);">
       <div class="pillar-card reveal">
         <div class="pillar-number">01</div>
-        <h3 class="pillar-title">Credit & Loan Systems</h3>
-        <p class="pillar-desc">Designing the product layer around credit — eligibility rules, affordability checks, collections enforcement, high-deposit pathways, and the agent tools that sit between a customer and a loan decision. At Copia Kenya and MoPhones, I built these systems from policy into product.</p>
+        <h3 class="pillar-title">Credit &amp; Loan Systems</h3>
+        <p class="pillar-desc">Designing the product layer around credit — eligibility rules, affordability checks, collections enforcement, high-deposit pathways, and the agent tools that sit between a customer and a loan decision. At Copia Kenya and MoPhones, I built these systems from policy into product, including end-to-end ownership of the Odoo loan module and automated collections infrastructure.</p>
         <div class="pillar-tags">
           <span class="pillar-tag">Loan Eligibility</span>
           <span class="pillar-tag">Collections</span>
@@ -489,26 +505,51 @@
       </div>
       <div class="pillar-card reveal reveal-delay-1">
         <div class="pillar-number">02</div>
-        <h3 class="pillar-title">Customer Research → Product Decisions</h3>
-        <p class="pillar-desc">Running research that actually changes what gets built — not research that gets filed and forgotten. From 300+ NPS responses to in-person LAB interviews to field observations, I turn qualitative and quantitative signals into sprint-ready priorities.</p>
+        <h3 class="pillar-title">Customer Intelligence Infrastructure</h3>
+        <p class="pillar-desc">Building behavioral segmentation systems that inform credit, CX, and growth decisions — not one-off research decks. At MoPhones, I synthesised 453+ customer responses with transactional and operational data to produce four validated behavioral personas. The infrastructure moved product decision-making from fragmented anecdote to structured behavioral intelligence.</p>
         <div class="pillar-tags">
-          <span class="pillar-tag">NPS Research</span>
-          <span class="pillar-tag">User Interviews</span>
-          <span class="pillar-tag">CSAT</span>
-          <span class="pillar-tag">Persona Mapping</span>
-          <span class="pillar-tag">A/B Testing</span>
+          <span class="pillar-tag">Behavioral Segmentation</span>
+          <span class="pillar-tag">Persona Infrastructure</span>
+          <span class="pillar-tag">NPS &amp; CSAT Systems</span>
           <span class="pillar-tag">Voice of Customer</span>
+          <span class="pillar-tag">Insight Translation</span>
         </div>
       </div>
       <div class="pillar-card reveal reveal-delay-2">
         <div class="pillar-number">03</div>
-        <h3 class="pillar-title">Field → Product Loop</h3>
-        <p class="pillar-desc">Going where the product actually lives — Nairobi market stalls, repair shops, agent training rooms — and closing the loop between what's happening in the field and what gets prioritised in the sprint. This loop is how I've consistently found problems dashboards miss.</p>
+        <h3 class="pillar-title">AI-Assisted CX &amp; Growth Infrastructure</h3>
+        <p class="pillar-desc">Building the operational layer that makes customer experience scale without proportionally scaling headcount. From WhatsApp journey redesign and RapidBot automation to Meta Ads acquisition loops and referral infrastructure — I design systems where each component compounds the one before it. 99% automated resolution. 94% leads growth. 43% manual workload reduction.</p>
         <div class="pillar-tags">
-          <span class="pillar-tag">Field Shadowing</span>
+          <span class="pillar-tag">WhatsApp Infrastructure</span>
+          <span class="pillar-tag">AI Support Systems</span>
+          <span class="pillar-tag">RapidBot</span>
+          <span class="pillar-tag">Growth Loops</span>
+          <span class="pillar-tag">Acquisition Funnels</span>
+          <span class="pillar-tag">Self-Service Flows</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-number">04</div>
+        <h3 class="pillar-title">Operational &amp; Internal Systems</h3>
+        <p class="pillar-desc">Owning the internal tooling and ERP infrastructure that operational teams depend on — but that rarely gets treated as a product problem. At Copia, I served as interim internal PM across ERP upgrade workstreams, coordinating requirements, UAT, and delivery across engineering, PMO, logistics, finance, and CX operations using BRICE prioritisation.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">ERP Coordination</span>
+          <span class="pillar-tag">Odoo</span>
+          <span class="pillar-tag">Workflow Optimisation</span>
+          <span class="pillar-tag">UAT &amp; Delivery</span>
+          <span class="pillar-tag">DWH Stabilisation</span>
+          <span class="pillar-tag">Internal Backlogs</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-number">05</div>
+        <h3 class="pillar-title">Field &amp; Distribution Systems</h3>
+        <p class="pillar-desc">Going where the product actually lives — Nairobi market stalls, repair shops, agent training rooms — and closing the loop between field reality and sprint priorities. From leading Western Region expansion to building offline merchant networks and agent recruitment systems, this is how I've consistently found problems that dashboards miss.</p>
+        <div class="pillar-tags">
           <span class="pillar-tag">Agent Systems</span>
           <span class="pillar-tag">Merchant Networks</span>
-          <span class="pillar-tag">User Stories</span>
+          <span class="pillar-tag">Field Shadowing</span>
+          <span class="pillar-tag">Regional Expansion</span>
           <span class="pillar-tag">Offline Sales</span>
           <span class="pillar-tag">Distribution Design</span>
         </div>
@@ -812,6 +853,27 @@
       <div class="project-section-divider-line"></div>
     </div>
 
+    <!-- WhatsApp AI Infrastructure FEATURED -->
+    <div class="project-card featured reveal">
+      <div>
+        <span class="flagship-label">Flagship</span>
+        <span class="project-tag">MoPhones Kenya · AI-Assisted CX · Growth Infrastructure</span>
+        <h3 class="project-name">WhatsApp Support &amp; Growth Infrastructure — AI-Assisted CX at Scale</h3>
+        <div class="project-pdim">
+          <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">WhatsApp had evolved into MoPhones' primary customer operations layer — spanning acquisition, onboarding, support, payment assistance, unlock requests, and upgrade journeys. But the infrastructure hadn't kept pace: <strong>journeys were fragmented, support handling was heavily manual, routing was unclear, and repetitive requests were overloading the CX team.</strong></span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Customer interviews confirmed WhatsApp was the preferred support channel by a wide margin — but customers were abandoning journeys before resolution. <strong>The failure wasn't willingness to self-serve; it was broken menu flows, dead-end routing, and bot responses that didn't match intent.</strong> The same 5–6 request types represented the bulk of manual CX volume — all predictable, all automatable.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Redesigned the WhatsApp customer journey end-to-end — mapping current and future-state flows across all touchpoints, fixing menu responsiveness and routing logic, scoping AI-assisted automation improvements for RapidBot 2.0, and integrating Zendesk ticket routing so escalations landed with the right agent with full customer context. Simultaneously integrated Meta Ads into WhatsApp acquisition flows to convert inbound interest directly into qualified leads.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>99% automated resolution rate</strong> achieved through RapidBot 2.0 rollout. <strong>43% reduction in manual support tickets.</strong> <strong>94% growth in monthly leads</strong> through Meta Ads–WhatsApp acquisition integration. CX team capacity shifted from repetitive handling to complex case resolution.</span></div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">99<span>%</span></div><div class="metric-lbl">Automated Resolution Rate</div></div>
+        <div class="metric-box"><div class="metric-val"><span>−43</span>%</div><div class="metric-lbl">Manual Support Tickets</div></div>
+        <div class="metric-box"><div class="metric-val"><span>+94</span>%</div><div class="metric-lbl">Monthly Leads Growth</div></div>
+        <div class="metric-box"><div class="metric-val">1<span>→</span>∞</div><div class="metric-lbl">Support Scale — Without Headcount Growth</div></div>
+      </div>
+    </div>
+
     <!-- NPS Research FEATURED -->
     <div class="project-card featured reveal">
       <div>
@@ -865,6 +927,18 @@
         <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customer.io campaigns were running with <strong>no clear lifecycle map, no measurement of message effectiveness,</strong> and some campaigns sending to the wrong segments or in conflict with each other.</span></div>
         <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Audited all active campaigns, built a full lifecycle engagement plan on Miro, and designed Post-Sale and Post-Service CSAT surveys triggered automatically via Customer.io and Zendesk after key customer events.</span></div>
         <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>Post-Sale CSAT live</strong> after device delivery. Grace period campaign analysis framework built. <strong>Device locking banner: 1,500 clicks in month 1</strong> — highest-performing banner to date.</span></div>
+      </div>
+    </div>
+
+    <!-- Customer Referral Growth Loop -->
+    <div class="project-card reveal reveal-delay-1">
+      <span class="project-tag">MoPhones Kenya · Growth Systems · Acquisition</span>
+      <h3 class="project-name">Customer Referral &amp; Growth Loop Infrastructure</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Acquisition at MoPhones was heavily dependent on paid channels and agent-driven sourcing. <strong>There was no structured mechanism to convert satisfied customers into a scalable, trust-based acquisition channel</strong> — even though field research consistently showed customers were referring informally without any product support.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Customer interviews revealed high willingness to refer — particularly among customers who had successfully completed a first loan. <strong>The referral behaviour existed; the infrastructure to capture, track, and incentivise it did not.</strong> Trust-based word-of-mouth in communities was generating leads that the product couldn't attribute or systematically scale.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Designed the referral programme architecture — incentive structure, attribution logic, referral tracking via unique customer links, and the in-app flow for submitting and monitoring referral status. Positioned the programme around <strong>community trust dynamics</strong> rather than generic discount mechanics, aligning incentives with the social context in which MoPhones customers actually operated.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Created a <strong>scalable, low-cost acquisition channel</strong> anchored in existing customer trust networks. Reduced dependency on paid acquisition for a segment of new customers. Gave the growth system a compounding loop — each new customer becoming a potential acquisition node rather than an endpoint.</span></div>
       </div>
     </div>
 
@@ -941,6 +1015,81 @@
       </div>
     </div>
 
+    <!-- SECTION: STRATEGIC SYSTEMS & INFRASTRUCTURE -->
+    <div class="project-section-divider strategic reveal">
+      <span class="project-section-divider-label">Strategic Systems &amp; Infrastructure</span>
+      <div class="project-section-divider-line"></div>
+    </div>
+
+    <!-- Customer Intelligence Infrastructure -->
+    <div class="project-card featured reveal">
+      <div>
+        <span class="project-tag">MoPhones Kenya · Customer Intelligence · Behavioral Systems</span>
+        <h3 class="project-name">Customer Intelligence &amp; Persona Infrastructure — Behavioral Segmentation at Scale</h3>
+        <div class="project-pdim">
+          <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">Customer understanding at MoPhones was scattered across disconnected sources — surveys, repayment behaviour, support interactions, financing preferences, repair patterns, and NPS data. <strong>There was no unified behavioral view of customers</strong> to inform product prioritisation, credit decisions, CX design, or growth targeting. Each team operated from its own slice of incomplete information.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Insight</span><span class="pdim-text">Analysis of <strong>453+ customer responses</strong> combined with transactional and operational data revealed four distinct behavioral segments — each with meaningfully different financing motivations, payment preferences, support expectations, and conversion drivers. <strong>Customers weren't a single audience; they were four distinct systems with different product requirements.</strong> Weekly payment preference dominated across segments. Financing was the primary purchase driver. Repair and support quality were the top NPS detractors.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">Built a structured customer intelligence infrastructure: validated behavioral personas anchored in transactional signals, segmentation across financing behaviour, trust patterns, operational risk, and purchase drivers. Connected survey insights with repayment behaviour data, grace period usage, support interaction patterns, and device ownership. Translated findings into product, credit, and CX opportunities including payment flexibility systems, trade-in programme design, and targeted retention interventions per segment.</span></div>
+          <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text">Produced <strong>four validated customer personas</strong> — Entrepreneur Hustlers, Professional Workers, Digital Achievers, Logistics Riders — each with defined behavioral signals, product priorities, and operational risk profiles. Infrastructure directly informed credit eligibility calibration, CX journey redesign, NPS action planning, and upgrade programme targeting. Moved customer decision-making from fragmented anecdote to <strong>structured behavioral intelligence.</strong></span></div>
+        </div>
+        <!-- Persona ecosystem visual -->
+        <div class="persona-ecosystem">
+          <div class="persona-chip">
+            <div class="persona-chip-name">Entrepreneur Hustlers</div>
+            <div class="persona-chip-desc">High volume, payment-flexible, acquisition via referral &amp; community trust</div>
+          </div>
+          <div class="persona-chip">
+            <div class="persona-chip-name">Professional Workers</div>
+            <div class="persona-chip-desc">Salary-cycle repayment, quality-sensitive, upgrade-prone segment</div>
+          </div>
+          <div class="persona-chip">
+            <div class="persona-chip-name">Digital Achievers</div>
+            <div class="persona-chip-desc">App-native, self-service preference, low support dependency</div>
+          </div>
+          <div class="persona-chip">
+            <div class="persona-chip-name">Logistics Riders</div>
+            <div class="persona-chip-desc">Device-critical, income-volatile, high grace period usage pattern</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-box"><div class="metric-val">453<span>+</span></div><div class="metric-lbl">Customer Responses Analyzed</div></div>
+        <div class="metric-box"><div class="metric-val">4</div><div class="metric-lbl">Validated Behavioral Personas</div></div>
+        <div class="metric-box"><div class="metric-val">5<span>+</span></div><div class="metric-lbl">Data Sources Synthesized</div></div>
+        <div class="metric-box"><div class="metric-val">3<span>→</span>∞</div><div class="metric-lbl">Teams Informed — Credit, CX &amp; Growth</div></div>
+      </div>
+    </div>
+
+    <!-- Odoo & Operational Systems Infrastructure -->
+    <div class="project-card reveal">
+      <span class="project-tag">Copia Kenya · Internal Systems · Operational Infrastructure</span>
+      <h3 class="project-name">Odoo &amp; Operational Systems Infrastructure — Internal Product Ownership</h3>
+      <div class="project-pdim">
+        <div class="pdim-row"><span class="pdim-label">Problem</span><span class="pdim-text">At Copia, core operational functions — loan management, collections, logistics, fulfilment, and finance reporting — ran on ERP and internal tooling that hadn't scaled with the business. <strong>Processes were manual where they should have been automated, data flows were fragmented, and operational teams were working around the system rather than through it.</strong> An ERP upgrade was underway, but without structured product ownership, the workstream lacked prioritisation, requirements clarity, and cross-team coordination.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Decision</span><span class="pdim-text">As interim internal product manager, scoped and documented ERP operational requirements across finance, collections, logistics, and customer operations. Coordinated upgrade workstreams and UAT across engineering, PMO, UX, and business stakeholders. Supported real-time finance data ingestion and data warehouse stabilisation. Managed operational product backlogs using BRICE prioritisation. Improved internal tooling across OFS, Optiflow, Kitting App, and Customer Care CRM — translating operational pain points into workflow improvements and scalable process standards.</span></div>
+        <div class="pdim-row"><span class="pdim-label">Impact</span><span class="pdim-text"><strong>ERP upgrade coordination delivered</strong> across multiple operational workstreams with clear requirements, tested workflows, and stakeholder sign-off. Improved visibility across repayment and collections workflows — reducing manual reconciliation. Operational teams gained <strong>structured tooling and standardised processes</strong> where informal workarounds had previously accumulated. Established a backlogs and prioritisation framework for ongoing internal systems work.</span></div>
+      </div>
+      <!-- System layers visual -->
+      <div class="system-layers">
+        <div class="system-layer">
+          <span class="system-layer-label">Finance</span>
+          <span class="system-layer-tools">Real-time data ingestion · DWH stabilisation · reporting workflows</span>
+        </div>
+        <div class="system-layer">
+          <span class="system-layer-label">Collections</span>
+          <span class="system-layer-tools">Repayment visibility · automated deduction logic · reconciliation</span>
+        </div>
+        <div class="system-layer">
+          <span class="system-layer-label">Logistics</span>
+          <span class="system-layer-tools">OFS · Optiflow · Kitting App · fulfilment workflow optimisation</span>
+        </div>
+        <div class="system-layer">
+          <span class="system-layer-label">CX Ops</span>
+          <span class="system-layer-tools">Customer Care CRM · ticket routing · operational escalation flows</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -970,13 +1119,15 @@
           <div class="timeline-role">Product Associate — Customer Experience &amp; Growth</div>
           <div class="timeline-company">MoPhones Kenya · Nairobi</div>
           <ul class="timeline-list">
-            <li>Designed and managed MoPhones' <strong>device credit product end-to-end</strong> — eligibility framework, repayment structure, and collections workflows from origination to close</li>
-            <li>Owned the credit eligibility framework, ensuring <strong>portfolio quality from point of origination</strong> through defined scoring criteria and submission standards</li>
-            <li>Led automation of the <strong>grace period system (2,000+ monthly requests)</strong> — defining eligibility logic, self-service flows, and success metrics; reduced CX workload by <strong>43%</strong></li>
-            <li>Drove <strong>94% growth in monthly leads</strong> through an integrated acquisition strategy spanning offline merchant networks, Facebook Ads, and Tally–Airtable pipeline integration</li>
-            <li>Designed <strong>NPS and Voice of Customer programmes</strong> — compiled 300+ responses across 3 channels; translated findings directly into sprint priorities and product decisions</li>
-            <li>Architected <strong>Zendesk &amp; 3CX integration roadmap</strong> — gap analysis, UAT, and Miro journey mapping; deployed Post-Sale CSAT with Customer.io automation</li>
-            <li>Recruited and trained <strong>50 commission merchants</strong>; app education banner drove <strong>1,500 clicks in month 1</strong>; 40+ WhatsApp leads from a single 2-day Facebook Ad test</li>
+            <li>Owned <strong>CX product roadmap prioritisation</strong> across app, WhatsApp, and sales flows — translating customer research and operational data into sprint priorities</li>
+            <li>Led automation of the <strong>grace period system (2,000+ monthly requests)</strong> — defined eligibility logic, self-service flows, and success metrics; reduced manual CX workload by <strong>43%</strong></li>
+            <li>Supported rollout of <strong>WhatsApp AI (RapidBot 2.0)</strong> — redesigned customer journeys, fixed routing and menu logic, and integrated Zendesk ticket escalation; achieved <strong>99% automated resolution rate</strong></li>
+            <li>Drove <strong>94% growth in monthly leads</strong> through Meta Ads–WhatsApp acquisition integration and Tally–Airtable offline pipeline deployment</li>
+            <li>Built <strong>customer intelligence infrastructure</strong> — synthesised 453+ responses across surveys, repayment behaviour, and support data into four validated behavioral personas (Entrepreneur Hustlers, Professional Workers, Digital Achievers, Logistics Riders) informing credit, CX, and growth decisions</li>
+            <li>Designed <strong>NPS and Voice of Customer programmes</strong> — 300+ responses compiled across 3 channels; findings shaped Q1 and Q2 sprint priorities directly</li>
+            <li>Launched <strong>self-service automations</strong> with CX and Growth teams — reduced manual support tickets by 43%; freed CX capacity for complex case handling</li>
+            <li>Architected <strong>Zendesk &amp; 3CX integration roadmap</strong> — gap analysis, UAT, and journey mapping; deployed Post-Sale CSAT with Customer.io automation</li>
+            <li>Designed and managed <strong>device credit product end-to-end</strong> — eligibility framework, repayment structure, and collections workflows from origination to close</li>
           </ul>
         </div>
       </div>
@@ -994,11 +1145,13 @@
           <div class="timeline-company">Copia Kenya Ltd · Nairobi &amp; Uganda</div>
           <ul class="timeline-list">
             <li>Managed Copia's <strong>agent credit system end-to-end</strong> — loan limits, repayment tracking, and collections enforcement built into the product layer via the Odoo loan module</li>
-            <li>Owned the Odoo loan module configuration, ensuring <strong>real-time reflection of agent creditworthiness</strong> and repayment behaviour across the field network</li>
+            <li>Owned the <strong>Odoo loan module configuration end-to-end</strong> — ensuring real-time reflection of agent creditworthiness and repayment behaviour across the field network</li>
+            <li>Served as <strong>interim internal product manager</strong> for ERP upgrade workstreams — scoping requirements, coordinating UAT across engineering, PMO, UX, logistics, and finance; prioritising operational backlogs using BRICE methodology</li>
+            <li>Improved <strong>internal operational tooling</strong> across OFS, Optiflow, Kitting App, and Customer Care CRM — translating operational pain points into scalable workflow standards</li>
+            <li>Supported <strong>real-time finance data ingestion and DWH stabilisation</strong> — giving finance and collections teams reliable visibility into repayment and operational performance</li>
             <li>Designed <strong>system-level collections enforcement</strong>: agents who defaulted automatically lost the ability to place orders — credit risk embedded directly into operational access</li>
-            <li>Led credit and insurance partnerships: <strong>Turaco</strong> (commission deduction model — near-zero friction enrolment) and <strong>M-Kopa</strong> (asset financing integration — pre-qualifying agents by repayment history)</li>
-            <li>Managed <strong>DFS portfolio across Kenya and Uganda</strong>, adapting credit products for new markets and regulatory environments</li>
-            <li>Supported <strong>Uganda market expansion</strong> — localising credit systems, onboarding partners, and adapting the eligibility framework to a new geography</li>
+            <li>Led credit and insurance partnerships: <strong>Turaco</strong> (commission deduction model) and <strong>M-Kopa</strong> (asset financing integration)</li>
+            <li>Managed <strong>DFS portfolio across Kenya and Uganda</strong> — adapting credit systems, collections logic, and eligibility frameworks for local regulatory environments</li>
           </ul>
         </div>
       </div>
@@ -1050,21 +1203,27 @@
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="skill-cluster-title">Research & Customer Insights</div>
+        <div class="skill-cluster-title">Customer Intelligence &amp; Behavioral Systems</div>
         <div class="skill-tags">
-          <span class="skill-tag">Qualitative Interviews</span><span class="skill-tag">NPS Survey Design</span><span class="skill-tag">CSAT Framework</span><span class="skill-tag">Field Observation</span><span class="skill-tag">Competitive Research</span><span class="skill-tag">Persona Mapping</span><span class="skill-tag">A/B Testing</span><span class="skill-tag">Voice of Customer</span>
+          <span class="skill-tag">Behavioral Segmentation</span><span class="skill-tag">Persona Infrastructure</span><span class="skill-tag">Transactional Data Analysis</span><span class="skill-tag">NPS Survey Design</span><span class="skill-tag">CSAT Framework</span><span class="skill-tag">Voice of Customer Systems</span><span class="skill-tag">Journey Friction Mapping</span><span class="skill-tag">Qualitative Interviews</span><span class="skill-tag">Competitive Research</span><span class="skill-tag">Insight-to-Decision Translation</span>
         </div>
       </div>
       <div class="reveal reveal-delay-3">
-        <div class="skill-cluster-title">CX Strategy & Lifecycle</div>
+        <div class="skill-cluster-title">CX Strategy, Automation &amp; Lifecycle</div>
         <div class="skill-tags">
-          <span class="skill-tag">Customer Journey Mapping</span><span class="skill-tag">CX Process Design</span><span class="skill-tag">Campaign Auditing</span><span class="skill-tag">Zendesk Optimisation</span><span class="skill-tag">WhatsApp Bot Design</span><span class="skill-tag">USSD Flow Design</span><span class="skill-tag">Support Workflow Design</span><span class="skill-tag">Lifecycle Engagement</span>
+          <span class="skill-tag">Customer Journey Mapping</span><span class="skill-tag">CX Process Design</span><span class="skill-tag">WhatsApp Infrastructure Design</span><span class="skill-tag">AI-Assisted Support Systems</span><span class="skill-tag">Support Automation Logic</span><span class="skill-tag">Campaign Auditing</span><span class="skill-tag">Zendesk Optimisation</span><span class="skill-tag">WhatsApp Bot Design</span><span class="skill-tag">USSD Flow Design</span><span class="skill-tag">Lifecycle Engagement</span><span class="skill-tag">Ticket Routing Design</span>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
-        <div class="skill-cluster-title">Tools & Platforms</div>
+        <div class="skill-cluster-title">Operational &amp; Internal Systems</div>
         <div class="skill-tags">
-          <span class="skill-tag">Airtable</span><span class="skill-tag">Tally Forms</span><span class="skill-tag">Typeform</span><span class="skill-tag">Customer.io</span><span class="skill-tag">Zendesk</span><span class="skill-tag">3CX</span><span class="skill-tag">Holistics</span><span class="skill-tag">Amplitude</span><span class="skill-tag">Telerivet</span><span class="skill-tag">Rapidbott</span><span class="skill-tag">Google Analytics / GTM</span><span class="skill-tag">Notion</span><span class="skill-tag">Miro</span><span class="skill-tag">Facebook Ads</span><span class="skill-tag">Shopify</span><span class="skill-tag">Odoo</span><span class="skill-tag">NuovoPay</span>
+          <span class="skill-tag">ERP Upgrade Coordination</span><span class="skill-tag">Odoo Loan Module</span><span class="skill-tag">Workflow Optimisation</span><span class="skill-tag">UAT Coordination</span><span class="skill-tag">BRICE Prioritisation</span><span class="skill-tag">Internal Product Backlogs</span><span class="skill-tag">DWH Stabilisation</span><span class="skill-tag">Operational Requirements Scoping</span><span class="skill-tag">Cross-functional Delivery</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-cluster-title">Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Airtable</span><span class="skill-tag">Tally Forms</span><span class="skill-tag">Typeform</span><span class="skill-tag">Customer.io</span><span class="skill-tag">Zendesk</span><span class="skill-tag">3CX</span><span class="skill-tag">RapidBot / RapidBott</span><span class="skill-tag">Holistics</span><span class="skill-tag">Amplitude</span><span class="skill-tag">Telerivet</span><span class="skill-tag">Google Analytics / GTM</span><span class="skill-tag">Notion</span><span class="skill-tag">Miro</span><span class="skill-tag">Facebook Ads</span><span class="skill-tag">Meta Ads Manager</span><span class="skill-tag">Shopify</span><span class="skill-tag">Odoo</span><span class="skill-tag">NuovoPay</span><span class="skill-tag">OFS</span><span class="skill-tag">Optiflow</span>
         </div>
       </div>
     </div>
